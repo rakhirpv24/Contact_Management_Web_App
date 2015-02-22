@@ -1,0 +1,651 @@
+@charset "utf-8";
+/*
+
+Hover resource: http://stackoverflow.com/questions/5061940/changing-the-child-elements-css-when-the-parent-is-hovered-with-jquery
+Transition resource: http://stackoverflow.com/questions/13968486/move-div-with-css-transition
+Keyframes animations: http://stackoverflow.com/questions/15485694/auto-scrolling-with-css/15486040#15486040
+calc: https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+*/
+
+body {
+    background-color:#FCC;
+}
+
+html,body {
+    height:100%;
+}
+
+/* 
+
+Universal styles for labels, e.g. "email", "phone number". 
+And other universal styles.
+*/
+
+/* NOTE: You need to specifiy a width for the elements using this class.*/
+.label-emailaddress, .label-phonenumber, .label-homeaddress, .label-workaddress, .label-birthdate {
+	text-align:right;
+}
+
+/* 
+
+Contact List 
+
+*/
+#contact-panel {
+	background-color:#FF2DFF;
+	top: 50px;
+	bottom: 10px;
+	width: 100%;
+	height: 100vh;
+	min-height: 92vh;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.contact-panel-inactive {
+	display: none;	
+}
+#contact-panel-addbutton {
+	float: right;
+}
+#contact-panel-label {
+	font: 25px arial, sans-serif;
+}
+#contact-list-container {
+	padding: 0px 0px 0px 0px;
+	overflow-y: scroll;
+	width: 100%;
+	height: 92%;
+}
+.contact-list{
+	/* [disabled]margin: 0px; */
+	padding: 0px;
+	list-style-type: none;
+	display: block;
+}
+
+.contact-list-category-label {
+	display: block;	
+	clear: both; 
+	float: left; 
+	display: block; 
+	position: relative;
+}
+
+
+/* 
+
+Contact panel as a thinner list.
+
+*/
+.contact-panel-thin {
+	width: 20% !important;
+	margin: 0 !important;
+}
+.contact-panel-thin #contact-panel-addbutton {
+	display:none !important;
+}
+
+
+/* 
+
+Contact items in list mode. 
+
+*/
+.contact-item {
+	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
+	margin: 1px 0px 1px 0px;
+	background-color:#FCF;
+	height: 80px;
+}
+
+.contact-item-image-container {
+	width: 80px;
+	height: 80px;
+	overflow:hidden;
+	position:absolute;
+	left: 0px;
+	top: 0px;
+}
+.contact-item-image {
+	width: 80px;
+	height: 80px;	
+}
+
+.contact-item-label-container {
+	position: absolute;
+	left: 90px;
+	top: 5px;
+	
+}
+.contact-item-name {
+	font: 20px arial, sans-serif;
+}
+
+.contact-item-phonenumber-container {
+	position:absolute;
+	left: 100px;
+	top: 30px;
+	display: inline-block;
+}
+.contact-item-emailaddress-container {
+	position:absolute;
+	left: 100px;
+	top: 45px;
+	display: inline-block;
+	z-index: 2;  /* makes email address clickable. */
+}
+.contact-item-phonenumber {
+	display: inline-block;
+}
+.contact-item-emailaddress {
+	display: inline-block;
+	z-index: 2;
+}
+.contact-item-phonenumber-label, .contact-item-emailaddress-label {
+	padding-right: 5px;
+	font: bold 12px arial, sans-serif;
+	display: inline-block;
+	color: #666;
+	width: 40px;
+	overflow:visible;
+}
+.contact-item-view-on-click {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+    display: block;
+    height: 100%;
+    width: 100%;
+	z-index: 1;
+	cursor:pointer;  /* makes cursor indicate clickability */
+}
+
+
+/*
+
+Contact items in thin list mode.
+
+*/
+.contact-panel-thin .contact-item-grid {
+	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
+	margin: 1px 0px 1px 0px;
+	background-color:#FC9;
+	height: 60px;
+	width: 100%;
+}
+
+.contact-panel-thin .contact-item-grid-image-container {
+	width: 80px;
+	height: 60px;
+	overflow:hidden;
+	position:absolute;
+	padding: -10px 0 0 0;
+	left: 0px;
+	top: 0px;
+}
+.contact-panel-thin .contact-item-grid-image {
+	width: 80px;
+	height: 80px;	
+}
+
+.contact-panel-thin .contact-item-grid-label-container {
+	padding: 5px;
+	position: absolute;
+	top: 25px;
+	left: 80px;
+	background-color:transparent;
+	white-space:nowrap;
+}
+.contact-panel-thin .contact-item-grid-name {
+	font: 20px arial, sans-serif;
+}
+
+.contact-panel-thin .contact-item-grid-phonenumber-container {
+	position:absolute;
+	left: 80px;
+	top: 60px;
+	display: inline-block;
+}
+.contact-panel-thin .contact-item-grid-emailaddress-container {
+	position:absolute;
+	left: 80px;
+	top: 70px;
+	display: inline-block;
+	z-index: 0;    /* makes email address NOT clickable. */
+	/* z-index: 2; */
+}
+.contact-panel-thin .contact-item-grid-phonenumber {
+	display: inline-block;
+}
+.contact-panel-thin .contact-item-grid-emailaddress {
+	display: inline-block;
+	z-index: 0;    /* makes email address NOT clickable. */
+	/* z-index: 2; */
+}
+.contact-panel-thin .contact-item-grid-phonenumber-label, .contact-panel-thin .contact-item-grid-emailaddress-label {
+	padding-right: 5px;
+	font: bold 12px arial, sans-serif;
+	display: inline-block;
+	color: #666;
+	width: 40px;
+	overflow:visible;
+}
+.contact-panel-thin .contact-item-grid-view-on-click {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+    display: block;
+    height: 100%;
+    width: 100%;
+	z-index: 1;
+	cursor:pointer;  /* makes cursor indicate clickability */
+}
+
+.contact-panel-thin .contact-item-grid:hover .contact-item-grid-label-container, 
+.contact-panel-thin .contact-item-grid.hover .contact-item-grid-label-container {
+	position: absolute;
+	width: 100%;
+	height: 70px;
+	left: 80px;
+	top: 0px;
+	text-overflow:crop;
+	overflow:hidden;
+	background-color:#F99;
+	-webkit-transition: all 0.2s ease-out;
+       -moz-transition: all 0.2s ease-out;
+        -ms-transition: all 0.2s ease-out;
+         -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+}
+
+.contact-panel-thin .contact-item-grid:hover .contact-item-grid-phonenumber-container, 
+.contact-panel-thin .contact-item-grid.hover .contact-item-grid-phonenumber-container {
+	top: 26px;
+	-webkit-transition: all 0.2s ease-out;
+       -moz-transition: all 0.2s ease-out;
+        -ms-transition: all 0.2s ease-out;
+         -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+}
+.contact-panel-thin .contact-item-grid:hover .contact-item-grid-emailaddress-container, 
+.contact-panel-thin .contact-item-grid.hover .contact-item-grid-emailaddress-container {
+	top: 41px;
+	-webkit-transition: all 0.2s ease-out;
+       -moz-transition: all 0.2s ease-out;
+        -ms-transition: all 0.2s ease-out;
+         -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+}
+
+
+/* 
+
+Contact items in grid mode.
+
+*/
+/* The contact item in grid mode. Note: this is NOT the grid itself.*/
+.contact-item-grid {
+	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
+	margin: 2px;
+	background-color:#FCF;
+	height: 200px;
+	width: 180px;
+	float: left;
+	overflow: hidden;
+}
+
+.contact-item-grid-image-container {
+	width: 180px;
+	height: 180px;
+	overflow:hidden;
+	position:absolute;
+	left: 0px;
+	top: 0px;
+}
+.contact-item-grid-image {
+	width: 180px;
+	height: 180px;	
+}
+
+.contact-item-grid-label-container {
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	left: 0px;
+	top: 170px;
+	padding: 0;
+	margin: 0;
+	background-color:#F99;
+	white-space:nowrap;
+}
+
+.contact-item-grid:hover .contact-item-grid-label-container, .contact-item-grid.hover .contact-item-grid-label-container {
+	/* [disabled]position: absolute; */
+	width: 100%;
+	height: 70px;
+	left: 0px;
+	top: 130px;
+	background-color: #F99;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;
+}
+
+.contact-item-grid-name {
+	font: 20px arial, sans-serif;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	display:inherit;
+}
+
+/* Slide the contact name if it exceeds label container width.*/
+.contact-item-grid:hover .contact-item-grid-name, .contact-item-grid.hover .contact-item-grid-name {
+	display: inline-block;
+	//overflow: visible;
+	//text-overflow: initial;
+	animation: slide infinite 3s alternate;
+	-webkit-animation: slide infinite 3s alternate;
+}
+@keyframes slide {
+  0% {
+    margin-left: 0px;
+  }
+  45% {
+	  margin-left: 0px;
+  }
+  100% {
+    margin-left: -20%; /*calc(180px - 100%);*/
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    margin-left: 0px;
+  }
+  45% {
+	  margin-left: 0px;
+  }
+  100% {
+    margin-left: -20%; /*calc(180px - 100%);*/
+  }
+}
+
+.contact-item-grid-phonenumber-container {
+	position:absolute;
+	left: 0px;
+	top: 200px;
+	display: inline-block;
+	//width: 100%;
+}
+.contact-item-grid-emailaddress-container {
+	position:absolute;
+	left: 0px;
+	top: 225px;
+	display: inline-block;
+	z-index: 2;  /* makes email address clickable. */
+}
+.contact-item-grid:hover .contact-item-grid-phonenumber-container, .contact-item-grid.hover .contact-item-grid-phonenumber-container {
+	top: 155px;
+	-webkit-transition: all 0.2s ease-out;
+       -moz-transition: all 0.2s ease-out;
+        -ms-transition: all 0.2s ease-out;
+         -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+}
+.contact-item-grid:hover .contact-item-grid-emailaddress-container, .contact-item-grid.hover .contact-item-grid-emailaddress-container {
+	top: 175px;
+	-webkit-transition: all 0.2s ease-out;
+       -moz-transition: all 0.2s ease-out;
+        -ms-transition: all 0.2s ease-out;
+         -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+}
+.contact-item-grid-phonenumber {
+	display: inline-block;
+}
+.contact-item-grid-emailaddress {
+	display: inline-block;
+}
+.contact-item-grid-phonenumber-label, .contact-item-grid-emailaddress-label {
+	padding-right: 5px;
+	font: bold 12px arial, sans-serif;
+	display: inline-block;
+	color: #666;
+	width: 40px;
+	overflow:visible;
+}
+.contact-item-grid-view-on-click {
+	position: relative;
+	left: 0px;
+	top: 0px;
+    display: block;
+    height: 100%;
+    width: 100%;
+	z-index: 1;
+	cursor:pointer;  /* makes cursor indicate clickability */
+}
+
+
+/* 
+
+Contact View - view the contact info.
+
+*/
+#contact-viewer {
+	position: absolute;
+	top: 0;
+	left: 20%;
+	background-color:#FC3;
+	width: 80%;
+	height: 100vh;
+}
+
+.contact-viewer-inactive {
+	display: none;	
+}
+
+#contact-view-editbutton {
+	float: right;
+}
+.contact-view-image-container {
+	width: 256px;
+	height: 256px;
+	overflow:hidden;
+	position:absolute;
+	left: 4px;
+	top: 4px;
+}
+.contact-view-image {
+	width: 256px;
+	height: 256px;	
+}
+
+.contact-view-name {
+	position: absolute;
+	left: 280px;
+	top: 15px;
+	font: 40px arial, sans-serif;
+}
+
+.contact-view-phonenumber-container {
+	position:absolute;
+	left: 300px;
+	top: 65px;
+	display: inline-block;
+}
+.contact-view-emailaddress-container {
+	position:absolute;
+	left: 300px;
+	top: 90px;
+	display: inline-block;
+}
+.contact-view-birthdate-container {
+	position:absolute;
+	left: 300px;
+	top: 190px;
+	display: inline-block;
+}
+.contact-view-workaddress-container {
+	position:absolute;
+	left: 300px;
+	top: 210px;
+	display: inline-block;
+}
+.contact-view-homeaddress-container {
+	position:absolute;
+	left: 300px;
+	top: 400px;
+	display: inline-block;
+}
+.contact-view-phonenumber {
+	display: inline-block;
+	font: 20px arial, sans-serif;
+}
+.contact-view-emailaddress {
+	display: inline-block;
+	font: 20px arial, sans-serif;
+}
+
+.contact-view-homeaddress, .contact-view-workaddress, .contact-view-birthdate  {
+	display: inline-block;
+	font: 20px arial, sans-serif;
+}
+
+
+.contact-view-phonenumber-label, .contact-view-emailaddress-label, .contact-view-birthdate-label, .contact-view-homeaddress-label, .contact-view-workaddress-label {
+	padding-right: 5px;
+	padding-left: 0;
+	font: bold 12px arial, sans-serif;
+	display: inline-block;
+	color: #666;
+	width: 40px;  /* required for the right-alignment to work. */
+	overflow:visible;
+}
+
+
+/*
+
+Contact editor.
+
+*/
+.contact-editor-inactive {
+	display: none;	
+}
+
+#contact-editor {
+	position: absolute;
+	top: 0;
+	left: 20%;
+	background-color:#FC3;
+	width: 80%;
+	height: 100vh;
+}
+
+#contact-edit-button-container {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;	
+}
+#contact-edit-savebutton {
+	background-color:#C39;
+}
+#contact-edit-cancelbutton {
+	background-color:#F6F; 
+}
+
+
+/* Add Contact */
+.contact-adder-inactive {
+	display: none;	
+}
+
+#contact-adder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color:#FC3;
+	width: 100%;
+	height: 100vh;
+	z-index: 3;  /* puts it higher than the contact list email addresses. */
+}
+#contact-add-name-container {
+	position: absolute;
+	left: 280px;
+	top: 5px;
+}
+.contact-add-name-textfield {
+	line-height: 25px;	
+}
+.contact-add-image-container {
+	width: 256px;
+	height: 256px;
+	overflow:hidden;
+	position:absolute;
+	left: 4px;
+	top: 4px;
+	cursor:pointer;  /* makes cursor indicate clickability */
+}
+#contact-add-button-container {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;	
+}
+
+.contact-add-phonenumber-container {
+	position:absolute;
+	left: 300px;
+	top: 65px;
+	display: inline-block;
+}
+.contact-add-emailaddress-container {
+	position:absolute;
+	left: 300px;
+	top: 90px;
+	display: inline-block;
+}
+.contact-add-phonenumber {
+	display: inline-block;
+	font: 20px arial, sans-serif;
+}
+.contact-add-emailaddress {
+	display: inline-block;
+	font: 20px arial, sans-serif;
+}
+.contact-add-phonenumber-label, .contact-add-emailaddress-label {
+	padding-right: 5px;
+	font: bold 12px arial, sans-serif;
+	display: inline-block;
+	color: #666;
+	width: 40px;
+	overflow:visible;
+}
+
+/*
+Group List
+*/
+#group-panel-label {
+	font: 25px arial, sans-serif;
+}
+#group-list-container {
+	padding: 0px 0px 0px 0px;
+	overflow-y: scroll;
+	width: 100%;
+	height: 92%;
+	margin: 0 auto;  /* centers the container. */
+}
+.group-list{
+	/*
+	min-width:800px;
+	max-width:100%;
+	width: auto;
+	*/
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	display: block;
+	margin: 0 auto;  /* centers the container. */
+}
+.group-list-inactive {
+	display: none;	
+}
