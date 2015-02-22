@@ -26,6 +26,11 @@ And other universal styles.
 	text-align:right;
 }
 
+.clickable {
+	cursor:pointer;  /* makes cursor indicate clickability */	
+}
+
+
 /* 
 
 Contact List 
@@ -72,18 +77,7 @@ Contact List
 }
 
 
-/* 
 
-Contact panel as a thinner list.
-
-*/
-.contact-panel-thin {
-	width: 20% !important;
-	margin: 0 !important;
-}
-.contact-panel-thin #contact-panel-addbutton {
-	display:none !important;
-}
 
 
 /* 
@@ -91,13 +85,14 @@ Contact panel as a thinner list.
 Contact items in list mode. 
 
 */
+
 .contact-item {
 	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
 	margin: 1px 0px 1px 0px;
 	background-color:#FCF;
 	height: 80px;
 }
-
+/*
 .contact-item-image-container {
 	width: 80px;
 	height: 80px;
@@ -132,7 +127,7 @@ Contact items in list mode.
 	left: 100px;
 	top: 45px;
 	display: inline-block;
-	z-index: 2;  /* makes email address clickable. */
+	z-index: 2;
 }
 .contact-item-phonenumber {
 	display: inline-block;
@@ -142,7 +137,8 @@ Contact items in list mode.
 	z-index: 2;
 }
 .contact-item-phonenumber-label, .contact-item-emailaddress-label {
-	padding-right: 5px;
+	margin: 0px 5px 0px;
+	padding: 0px;
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
 	color: #666;
@@ -157,15 +153,24 @@ Contact items in list mode.
     height: 100%;
     width: 100%;
 	z-index: 1;
-	cursor:pointer;  /* makes cursor indicate clickability */
+	cursor:pointer;
 }
-
+*/
 
 /*
 
 Contact items in thin list mode.
 
 */
+
+.contact-panel-thin {
+	width: 20% !important;
+	margin: 0 !important;
+}
+.contact-panel-thin #contact-panel-addbutton {
+	display:none !important;
+}
+
 .contact-panel-thin .contact-item-grid {
 	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
 	margin: 1px 0px 1px 0px;
@@ -189,9 +194,9 @@ Contact items in thin list mode.
 }
 
 .contact-panel-thin .contact-item-grid-label-container {
-	padding: 5px;
+	padding: 1px 2px 1px 3px;
 	position: absolute;
-	top: 25px;
+	top: 23px;
 	left: 80px;
 	background-color:transparent;
 	white-space:nowrap;
@@ -224,7 +229,7 @@ Contact items in thin list mode.
 	/* z-index: 2; */
 }
 .contact-panel-thin .contact-item-grid-phonenumber-label, .contact-panel-thin .contact-item-grid-emailaddress-label {
-	padding-right: 5px;
+	
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
 	color: #666;
@@ -258,10 +263,9 @@ Contact items in thin list mode.
          -o-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
 }
-
 .contact-panel-thin .contact-item-grid:hover .contact-item-grid-phonenumber-container, 
 .contact-panel-thin .contact-item-grid.hover .contact-item-grid-phonenumber-container {
-	top: 26px;
+	top: 22px;
 	-webkit-transition: all 0.2s ease-out;
        -moz-transition: all 0.2s ease-out;
         -ms-transition: all 0.2s ease-out;
@@ -270,7 +274,7 @@ Contact items in thin list mode.
 }
 .contact-panel-thin .contact-item-grid:hover .contact-item-grid-emailaddress-container, 
 .contact-panel-thin .contact-item-grid.hover .contact-item-grid-emailaddress-container {
-	top: 41px;
+	top: 38px;
 	-webkit-transition: all 0.2s ease-out;
        -moz-transition: all 0.2s ease-out;
         -ms-transition: all 0.2s ease-out;
@@ -314,7 +318,7 @@ Contact items in grid mode.
 	height: 30px;
 	left: 0px;
 	top: 170px;
-	padding: 0;
+	padding: 2px 0 2px 3px;
 	margin: 0;
 	background-color:#F99;
 	white-space:nowrap;
@@ -346,8 +350,8 @@ Contact items in grid mode.
 	display: inline-block;
 	//overflow: visible;
 	//text-overflow: initial;
-	animation: slide infinite 3s alternate;
-	-webkit-animation: slide infinite 3s alternate;
+	animation: slide infinite 3s normal;
+	-webkit-animation: slide infinite 3s normal;
 }
 @keyframes slide {
   0% {
@@ -357,7 +361,7 @@ Contact items in grid mode.
 	  margin-left: 0px;
   }
   100% {
-    margin-left: -20%; /*calc(180px - 100%);*/
+    margin-left: -100%; /*calc(180px - 100%);*/
   }
 }
 @-webkit-keyframes slide {
@@ -368,7 +372,7 @@ Contact items in grid mode.
 	  margin-left: 0px;
   }
   100% {
-    margin-left: -20%; /*calc(180px - 100%);*/
+    margin-left: -100%; /*calc(180px - 100%);*/
   }
 }
 
@@ -410,7 +414,9 @@ Contact items in grid mode.
 	display: inline-block;
 }
 .contact-item-grid-phonenumber-label, .contact-item-grid-emailaddress-label {
-	padding-right: 5px;
+	margin: 0px 5px 0px;
+	padding: 0px;
+	border: 0px;
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
 	color: #666;
@@ -592,7 +598,6 @@ Contact editor.
 	position:absolute;
 	left: 4px;
 	top: 4px;
-	cursor:pointer;  /* makes cursor indicate clickability */
 }
 #contact-add-button-container {
 	position: absolute;
@@ -628,6 +633,16 @@ Contact editor.
 	width: 40px;
 	overflow:visible;
 }
+
+.contact-add-photo-edit-label {
+	display: none;
+}
+
+.contact-add-image-container:hover .contact-add-photo-edit-label, 
+.contact-add-image-container.hover .contact-add-photo-edit-label {
+	display: initial !important; 
+}
+
 
 /*
 Group List

@@ -9,64 +9,46 @@
 </head>
 
 <body>
-<div style="position:relative; width:100%; height:100%;"> 
-  <!-- Contact List -->
-  <div id="contact-panel">
-    <button id="contact-panel-addbutton">add contact</button>
-    <span id="contact-panel-label">Contacts</span>
-    <div id="contact-list-container"></div>
-  </div>
-  <!-- Viewer for viewing contact info. -->
-  <div id="contact-viewer" class="contact-viewer-inactive"> </div>
-  <!-- Editor for editing contact info. -->
-  <div id="contact-editor" class="contact-editor-inactive">
-    <div id="contact-add-name-container" >
-      <input type="text" class="contact-add-name-textfield" placeholder="First name" value="Ron"/>
-      <input type="text" class="contact-add-name-textfield" placeholder="Last name" value="Mak" />
-    </div>
-    <div class="contact-view-image-container"><img class="contact-view-image" src="images/ron.jpg" alt="A Contact" /></div>
-    <div class="contact-view-phonenumber-container">
-      <div class="contact-view-phonenumber-label label-phonenumber">cell</div>
-      <input type="text" placeholder="phone number"  value="(408)555-1234"/>
-    </div>
-    <div class="contact-view-emailaddress-container ">
-      <div class="contact-view-emailaddress-label label-emailaddress">email</div>
-      <input type="text" placeholder="email address" value="ron.mak@sjsu.edu" />
-    </div>
-    <div class="contact-view-homeaddress-container">
-      <div class="contact-view-homeaddress-label label-homeaddress">home</div>
-      <div class="contact-view-homeaddress">
-        <textarea rows="4" cols="22">One Washington Square, San Jose, CA 95192</textarea>
-      </div>
-    </div>
-    <div class="contact-view-workaddress-container">
-      <div class="contact-view-workaddress-label label-workaddress">work</div>
-      <div class="contact-view-workaddress">
-        <textarea rows="4" cols="22">One Washington Square, San Jose, CA 95192</textarea>
-      </div>
-    </div>
-    <div class="contact-view-birthdate-container">
-      <div class="contact-view-birthdate-label label-birthdate">DOB</div>
-      <div class="contact-view-birthdate">
-        <select class="contact-edit-birthdate-month">
-          <option value="1">Jan</option>
-          <option value="2">Feb</option>
-          <option value="3">Mar</option>
-          <option value="4">Apr</option>
-          <option value="5">May</option>
-          <option value="6">Jun</option>
-          <option value="7">Jul</option>
-          <option value="8">Aug</option>
-          <option value="9">Sep</option>
-          <option value="10">Oct</option>
-          <option value="11">Nov</option>
-          <option value="12">Dec</option>
-        </select>
-        <select class="contact-edit-birthdate-date">
-        </select>
-        <select class="contact-edit-birthdate-year">
-        </select>
-        <script type="text/javascript">
+	<div style="position:relative; width:100%; height:100%;">
+    	<!-- Contact List -->
+        <div id="contact-panel">
+            <button id="contact-panel-addbutton">add contact</button>
+            <span id="contact-panel-label">Contacts</span>
+    
+            <div id="contact-list-container"></div>
+        </div>
+        <!-- Viewer for viewing contact info. -->
+        <div id="contact-viewer" class="contact-viewer-inactive">
+        </div>
+        <!-- Editor for editing contact info. -->
+        <div id="contact-editor" class="contact-editor-inactive">
+            <div id="contact-add-name-container" ><input type="text" class="contact-add-name-textfield" placeholder="First name" value="Ron"/> <input type="text" class="contact-add-name-textfield" placeholder="Last name" value="Mak" /></div>
+                <div class="contact-add-image-container clickable"><img class="contact-add-photo-edit-label" src="images/photo-edit-label.png" alt="Select a photo" /><img class="contact-view-image" src="images/ron.jpg" alt="A Contact" /></div>
+                <div class="contact-view-phonenumber-container"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><input type="text" placeholder="phone number"  value="(408)555-1234"/></div>
+                <div class="contact-view-emailaddress-container "><div class="contact-view-emailaddress-label label-emailaddress">email</div><input type="text" placeholder="email address" value="ron.mak@sjsu.edu" /></div>
+                <div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress"><textarea rows="4" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
+							<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress"><textarea rows="4" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
+							<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">
+                            	<select class="contact-edit-birthdate-month">
+                                	<option value="1">Jan</option>
+                                    <option value="2">Feb</option>
+                                    <option value="3">Mar</option>
+                                    <option value="4">Apr</option>
+                                    <option value="5">May</option>
+                                    <option value="6">Jun</option>
+                                    <option value="7">Jul</option>
+                                    <option value="8">Aug</option>
+                                    <option value="9">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select>
+                                <select class="contact-edit-birthdate-date">
+                                	
+                                </select>
+                                <select class="contact-edit-birthdate-year">
+                                </select>
+                                <script type="text/javascript">
 									// Populate the date and year dropdown menus.
 									var dateDropdown = jQuery(".contact-edit-birthdate-date");
 									var yearDropdown = jQuery(".contact-edit-birthdate-year");
@@ -76,15 +58,14 @@
 									for (var i = 2015; i >= 1850; i--) {
 										yearDropdown.append( jQuery('<option value="' + i + '">' + i + '</option>') );	
 									}
-								</script> 
-      </div>
-    </div>
-    <div id="contact-edit-button-container">
-      <button id="contact-edit-cancelbutton">Cancel</button>
-      <button id="contact-edit-savebutton">Save</button>
-    </div>
-  </div>
-  
+								</script>
+                            </div></div>
+			<div id="contact-edit-button-container">
+        <button id="contact-edit-cancelbutton">Cancel</button>
+        <button id="contact-edit-savebutton">Save</button>
+	        </div>
+        </div>
+        <!-- Adding a new contact. -->     
   <script>
   $(document).ready(function() {
     $("#addcontact-dob").datepicker();
