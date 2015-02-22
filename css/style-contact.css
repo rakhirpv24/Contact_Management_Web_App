@@ -443,6 +443,12 @@ Contact View - view the contact info.
 	height: 100vh;
 }
 
+#contact-view-delete{
+	position: relative;
+    left: 80%;
+    top: 10%;
+}
+
 .contact-viewer-inactive {
 	display: none;	
 }

@@ -12,6 +12,7 @@ var users = [
 	{firstName: "Ron5", lastName: "Mak5", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
 	{firstName: "Ron654321", lastName: "Mak654321", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"
 	}];
+var globalContactInfo;
 
 var groups = [
 	{name: "Friends", photo: "images/obama2.jpg"},
@@ -20,7 +21,7 @@ var groups = [
 ];
 
 // Default contact info.
-var contactDefault = {firstName: "", lastName: "", email: "", cell: "", photo: "no-image.png", birthdate: "1/1/2015",homeAddress: "", workAddress: ""};
+var contactDefault = {firstName: "", lastName: "", email: "", cell: "", photo: "images/no-image.png", birthdate: "1/1/2015",homeAddress: "", workAddress: ""};
 // Default group info.
 var groupDefault = {name: "", photo: ""};
 
@@ -73,6 +74,7 @@ var contactUtilities = new function() {
 	
 	/* View the contact with the specified info. */
 	this.showContactViewer = function(contactInfo) {
+		globalContactInfo = contactInfo;
 		jQuery('#contact-viewer').removeClass("contact-viewer-inactive");
 		// Remove old contact info from the viewer. FIXME: In a real version, you would probably use jQuery to overwrite on the DOM elements the values instead.
 		jQuery('#contact-viewer').empty();
@@ -92,6 +94,7 @@ var contactUtilities = new function() {
 	this.makeContactDisplay = function(contactInfo) {
 		var container;
 		var editButton;
+		var deleteButton;
 		var panel;
 		// Make the button for editing the contact.
 		editButton = jQuery('<button id="contact-view-editbutton">edit contact</button>');
@@ -101,12 +104,39 @@ var contactUtilities = new function() {
 				self.showContactEditor(contactInfo);
 			};
 		}(this));
+		
+		// Make the button for deleting the contact.
+		deleteButton = jQuery('<button id="contact-view-delete" >Delete</button>');
+		// When the delete button is clicked, delete the contact.
+		deleteButton.click(function(self) {
+			return function() {
+				for (var i = 0; i < users.length; i++) {
+					var contact = users[i];
+					if(contact.firstName == globalContactInfo.firstName && contact.lastName == globalContactInfo.lastName) {
+						//var contactList = jQuery(document.getElementById("contact-list-id"));
+						//contactList.remove(document.getElementById(self.getContactInfoId(globalContactInfo)));
+						$(document.getElementById(self.getContactInfoId(globalContactInfo))).remove();
+						users.splice(i,1);
+						if(i == (users.length)) {
+							// Display  0
+							self.showContactViewer(users[0]);
+						} else {
+							self.showContactViewer(users[i]);
+						}
+						break;
+					}				
+				} 
+			};
+		}(this));
+		
 		// Make the main panel.
 		panel = jQuery(this.makeContactDisplayPanelString(contactInfo));
 		// Put everything into a container.
 		container = jQuery('<div></div>');
+		container.append(deleteButton);
 		container.append(editButton);
 		container.append(panel);
+		
 		return container;
 	}
 	
@@ -173,15 +203,19 @@ var contactUtilities = new function() {
                     
 		contactItemElement = jQuery(contactItemHTML);
 		contactItemElement.click(function(self) {
-			return function() { self.showContactViewer(contactInfo) };
+			return function() { 
+			self.showContactViewer(contactInfo) };
     	}(this));    
 		
 		return contactItemElement;
 	};
 	
+	this.getContactInfoId = function(contactInfo){
+		return contactInfo.firstName + '_' + contactInfo.lastName;
+	};
 	// Returns the HTML string for the contact item.
 	this.makeListItemString = function(contactInfo) {
-		return '<div class="contact-item">'
+		return '<div id = "' + this.getContactInfoId(contactInfo) + '" class="contact-item">'
 						+ '<div class="contact-item-view-on-click"></div>'
 						+ '<div class="contact-item-label-container">'
 						+ '<div class="contact-item-name">'+ contactInfo.firstName + ' ' + contactInfo.lastName +'</div>'
@@ -194,7 +228,7 @@ var contactUtilities = new function() {
 	
 	// Returns the HTML string for the contact item, with classes for the grid format.
 	this.makeListGridItemString = function(contactInfo) {
-		return '<div class="contact-item-grid">'
+		return '<div id = "' + this.getContactInfoId(contactInfo) + '"class="contact-item-grid">'
 						+ '<div class="contact-item-grid-view-on-click"></div>'
 						+ '<div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="'+ contactInfo.photo +'" alt="'+ contactInfo.firstName +'\'s image" /></div>'
 						+ '<div class="contact-item-grid-label-container">'
@@ -301,7 +335,7 @@ Initializes the contact list with some contacts.
 */
 function initContactList() {
 	var contactListContainer = jQuery('#contact-list-container');
-	var contactList = jQuery('<ol class="contact-list"></ol>');
+	var contactList = jQuery('<ol id = "contact-list-id" class="contact-list"></ol>');
 	contactListContainer.append(contactList);
 	for (var i = 0; i < users.length; i++) {
 		var contact = users[i];
@@ -362,7 +396,18 @@ window.addEventListener('load', function(e) {
 		contactUtilities.hideContactEditor();
 	});
 	jQuery('#contact-add-savebutton').click(function(){
-		// TODO: do something to save the contact.
+	users.push({firstName: document.getElementById("addcontact-firstname").value, 
+	lastName: document.getElementById("addcontact-lastname").value, 
+	email: document.getElementById("addcontact-email").value, 
+	cell: document.getElementById("addcontact-phone").value, 
+	photo: "images/no-image.png", 
+	birthdate: document.getElementById("addcontact-dob").value, 
+	homeAddress: document.getElementById("addcontact-homeaddress").value, 
+	workAddress: document.getElementById("addcontact-officeaddress").value});
+	
+	var contactList = jQuery(document.getElementById("contact-list-id"));
+	contactUtilities.addContactToList(contactList, users[users.length-1]);
+
 		contactUtilities.hideContactAdder();
 	});
 	jQuery('#contact-add-cancelbutton').click(function(){
