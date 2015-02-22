@@ -111,7 +111,7 @@ var contactUtilities = new function() {
 	}
 	
 	/*
-	Makes the HTML string for hte cotnact display Panel.
+	Makes the HTML string for hte cotnact display Panel, where contact is Viewed.
 	FIXME: In a real version, you would probably use jQuery to insert the values into the DOM elements instead of adding the contact info to the HTML string.
 	*/
 	this.makeContactDisplayPanelString = function(contactInfo) {
@@ -119,8 +119,8 @@ var contactUtilities = new function() {
 		return '<div class="contact-view">'
                            + '<div class="contact-view-name">' + contactInfo.firstName + ' ' + contactInfo.lastName + '</div>'
                            + '<div class="contact-view-image-container"><img class="contact-view-image" src="' + contactInfo.photo + '" alt="A Contact" /></div>'
-                           + '<div class="contact-view-phonenumber-container"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div></div>'
-                            + '<div class="contact-view-emailaddress-container"><div class="contact-view-emailaddress-label label-emailaddress">email</div><div class="contact-view-emailaddress"><a href="' + contactInfo.email +'">' + contactInfo.email +'</a></div></div>'
+                           + '<button type="button" class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div></button>'
+                            + '<a href="mailto:'+ contactInfo.email +'"><button type="button" class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress">email</div><div class="contact-view-emailaddress">' + contactInfo.email +'</div></button></a>'
 							+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
 							+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
 							+ '<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">' + contactInfo.birthdate +'</div></div>'
@@ -200,8 +200,8 @@ var contactUtilities = new function() {
 						+ '<div class="contact-item-grid-label-container">'
 						+ '<div class="contact-item-grid-name">'+ contactInfo.firstName + ' ' + contactInfo.lastName +'</div>'
                         + '</div>'
-                        + '<div class="contact-item-grid-phonenumber-container"><div class="contact-item-grid-phonenumber-label label-phonenumber">cell</div><div class="contact-item-grid-phonenumber">'+ contactInfo.cell +'</div></div>'
-                        + '<div class="contact-item-grid-emailaddress-container"><div class="contact-item-grid-emailaddress-label label-emailaddress">email</div><div class="contact-item-grid-emailaddress"><a href="mailto:'+ contactInfo.email +'">'+ contactInfo.email +'</a></div></div>'
+                        + '<div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call '+ contactInfo.firstName +'"><img src="images/call.png" alt="call" /></button><div class="contact-item-grid-phonenumber">'+ contactInfo.cell +'</div></div>'
+                        + '<div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email '+ contactInfo.firstName +'"><img src="images/email.png" alt="email" /></button><div class="contact-item-grid-emailaddress"><a href="mailto:'+ contactInfo.email +'">'+ contactInfo.email +'</a></div></div>'
                         +'</div>';
 	}
 	

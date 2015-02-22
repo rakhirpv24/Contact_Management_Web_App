@@ -205,6 +205,7 @@ Contact items in thin list mode.
 	left: 80px;
 	top: 60px;
 	display: inline-block;
+	z-index: 0;    /* makes call button NOT clickable. */
 }
 .contact-panel-thin .contact-item-grid-emailaddress-container {
 	position:absolute;
@@ -377,6 +378,7 @@ Contact items in grid mode.
 	top: 200px;
 	display: inline-block;
 	//width: 100%;
+	z-index: 2;  /* makes call button clickable. */
 }
 .contact-item-grid-emailaddress-container {
 	position:absolute;
