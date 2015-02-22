@@ -1,7 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script  src="js/dataValidation.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <title>Sign up</title>
 </head>
 
@@ -11,19 +13,19 @@
 <table width="60%" border="0">
   <tr>
     <td><form id="form1" name="form1" method="post" action="">
-      <label for="firstname2">First Name: </label>
+      <label for="firstname2">First Name: *</label>
     </form></td>
-    <td><input type="text" name="firstname" id="firstname2" /></td>
+    <td><input type="text" name="firstname" id="firstname" /></td>
   </tr>
   <tr>
     <td><form id="form2" name="form2" method="post" action="">
-      <label for="lastname">Last Name:</label>
+      <label for="lastname">Last Name:*</label>
     </form></td>
     <td><input type="text" name="lastname" id="lastname" /></td>
   </tr>
   <tr>
     <td><form id="form3" name="form3" method="post" action="">
-      <label for="email">Email: </label>
+      <label for="email">Email: *</label>
     </form></td>
     <td><input type="text" name="email" id="email" /></td>
   </tr>
@@ -41,21 +43,21 @@
   </tr>
   <tr>
     <td><form id="form6" name="form6" method="post" action="">
-      <label for="username">User Name:</label>
+      <label for="username">User Name:*</label>
     </form></td>
     <td><input type="text" name="username" id="username" /></td>
   </tr>
   <tr>
     <td><form id="form7" name="form7" method="post" action="">
-      <label for="password">Password:</label>
+      <label for="password">Password:*</label>
     </form></td>
-    <td><input type="text" name="password" id="password" /></td>
+    <td><input type="password" name="password" id="password" /></td>
   </tr>
   <tr>
     <td><form id="form8" name="form8" method="post" action="">
-      <label for="confirmpassword">Confirm Password:</label>
+      <label for="confirmpassword">Confirm Password:*</label>
     </form></td>
-    <td><input type="text" name="confirmpassword" id="confirmpassword" /></td>
+    <td><input type="password" name="confirmpassword" id="confirmpassword" /></td>
   </tr>
 </table>
 <form id="form9" name="form9" method="post" action="">
@@ -65,8 +67,7 @@ of this website.
 </form>
 <p><input name="cancel" type="button" value="Cancel" />
   &nbsp;&nbsp;&nbsp;  
-  <input name="register" type="button" value="Register" />
+  <input name="register" type="button" value="Register" onClick="validateData()"/>
 </p>
-
 </body>
 </html>
