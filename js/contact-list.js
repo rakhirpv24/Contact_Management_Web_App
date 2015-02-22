@@ -34,6 +34,18 @@ var contactUtilities = new function() {
 	this.makeListGridItemString;
 	this.makeContactListItem;
 
+	/* Refreshes the list of contacts with the specfied list of contacts. */
+	this.refreshContactList = function(contacts) {
+		var contactListContainer = jQuery('#contact-list-container');
+		var contactList = jQuery('<ol class="contact-list"></ol>');
+		contactListContainer.empty();
+		contactListContainer.append(contactList);
+		for (var i = 0; i < contacts.length; i++) {
+			var contact = contacts[i];
+			this.addContactToList(contactList, contact);
+		}
+	}
+	
 	/* Show contact panel full, and other panels are deactivated. */
 	this.showContactPanelFullOnly = function() {
 		this.showContactPanelFull();
@@ -149,8 +161,8 @@ var contactUtilities = new function() {
 		return '<div class="contact-view">'
                            + '<div class="contact-view-name">' + contactInfo.firstName + ' ' + contactInfo.lastName + '</div>'
                            + '<div class="contact-view-image-container"><img class="contact-view-image" src="' + contactInfo.photo + '" alt="A Contact" /></div>'
-                           + '<button type="button" class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div></button>'
-                            + '<a href="mailto:'+ contactInfo.email +'"><button type="button" class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress">email</div><div class="contact-view-emailaddress">' + contactInfo.email +'</div></button></a>'
+                           + '<button type="button" class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber"><img src="images/call.png" alt="call" /></div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div></button>'
+                            + '<a href="mailto:'+ contactInfo.email +'"><button type="button" class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress"><img src="images/email.png" alt="email" /></div><div class="contact-view-emailaddress">' + contactInfo.email +'</div></button></a>'
 							+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
 							+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
 							+ '<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">' + contactInfo.birthdate +'</div></div>'
@@ -183,6 +195,7 @@ var contactUtilities = new function() {
 	}
 	
 	/* Returns a jQuery element representing a contact item to put in the contact list.*/
+	
 	this.makeContactListItem = function(contactInfo) {
 		// Set the contact info to default if it is undefined.
 		contactInfo = {
@@ -210,9 +223,13 @@ var contactUtilities = new function() {
 		return contactItemElement;
 	};
 	
+
 	this.getContactInfoId = function(contactInfo){
 		return contactInfo.firstName + '_' + contactInfo.lastName;
 	};
+
+	/*
+
 	// Returns the HTML string for the contact item.
 	this.makeListItemString = function(contactInfo) {
 		return '<div id = "' + this.getContactInfoId(contactInfo) + '" class="contact-item">'
@@ -225,6 +242,7 @@ var contactUtilities = new function() {
                         + '<div class="contact-item-emailaddress-container"><div class="contact-item-emailaddress-label label-emailaddress">email</div><div class="contact-item-emailaddress"><a href="mailto:'+ contactInfo.email +'">'+ contactInfo.email +'</a></div></div>'
                         +'</div>';	
 	}
+	*/
 	
 	// Returns the HTML string for the contact item, with classes for the grid format.
 	this.makeListGridItemString = function(contactInfo) {
@@ -388,6 +406,7 @@ window.addEventListener('load', function(e) {
 	jQuery('#contact-panel-addbutton').click(function(){
 		contactUtilities.showContactAdder();
 	});
+	// Edit Contact stuff
 	jQuery('#contact-edit-savebutton').click(function(){
 		// TODO: do something to save the contact.
 		contactUtilities.hideContactEditor();
@@ -395,6 +414,29 @@ window.addEventListener('load', function(e) {
 	jQuery('#contact-edit-cancelbutton').click(function(){
 		contactUtilities.hideContactEditor();
 	});
+	jQuery('#contact-edit-deletebutton').click(function() {
+		// FIXME: it is hardcoded to Delete user Ron Mak only. In a real version, it should delete the currently viewed contact.
+		var makIndex;
+		for (var i = 0; i < users.length; i++) {
+			contact = users[i];
+			if (contact.firstName == "Ron" && contact.lastName == "Mak") {
+				makIndex = i;
+				break;
+			}
+		}
+		// Remove Ron Mak
+		users.splice(makIndex, 1);
+		/*
+		users = users.filter(function(e) {
+			return !(e.firstName == "Ron" && e.lastName == "Mak");
+		});
+		*/
+		contactUtilities.hideContactEditor();
+		contactUtilities.refreshContactList(users);
+		// Show next contact if it exists, otherwise contact above Ron Mak.
+		contactUtilities.showContactViewer( users[makIndex] || users[makIndex - 1] );
+	});
+	// Add contact stuff
 	jQuery('#contact-add-savebutton').click(function(){
 	users.push({firstName: document.getElementById("addcontact-firstname").value, 
 	lastName: document.getElementById("addcontact-lastname").value, 

@@ -233,7 +233,7 @@ Contact items in thin list mode.
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
 	color: #666;
-	width: 40px;
+	width: 30px;
 	overflow:visible;
 }
 .contact-panel-thin .contact-item-grid-view-on-click {
@@ -350,14 +350,14 @@ Contact items in grid mode.
 	display: inline-block;
 	//overflow: visible;
 	//text-overflow: initial;
-	animation: slide infinite 3s normal;
-	-webkit-animation: slide infinite 3s normal;
+	animation: slide infinite 7s normal;
+	-webkit-animation: slide infinite 7s normal;
 }
 @keyframes slide {
   0% {
     margin-left: 0px;
   }
-  45% {
+  15% {
 	  margin-left: 0px;
   }
   100% {
@@ -368,7 +368,7 @@ Contact items in grid mode.
   0% {
     margin-left: 0px;
   }
-  45% {
+  15% {
 	  margin-left: 0px;
   }
   100% {

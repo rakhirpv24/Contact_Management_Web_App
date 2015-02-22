@@ -29,29 +29,26 @@
                 <div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress"><textarea rows="4" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
 							<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress"><textarea rows="4" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
 							<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">
-                            	<select class="contact-edit-birthdate-month">
-                                	<option value="1">Jan</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Mar</option>
-                                    <option value="4">Apr</option>
-                                    <option value="5">May</option>
-                                    <option value="6">Jun</option>
-                                    <option value="7">Jul</option>
-                                    <option value="8">Aug</option>
-                                    <option value="9">Sep</option>
-                                    <option value="10">Oct</option>
-                                    <option value="11">Nov</option>
-                                    <option value="12">Dec</option>
-                                </select>
-                                <select class="contact-edit-birthdate-date">
-                                	
-                                </select>
-                                <select class="contact-edit-birthdate-year">
-                                </select>
+                            	<select class="contact-edit-birthdate-month"></select>
+                                <select class="contact-edit-birthdate-date"></select>
+                                <select class="contact-edit-birthdate-year"></select>
                                 <script type="text/javascript">
-									// Populate the date and year dropdown menus.
+									// Populate the month, date and year dropdown menus.
+									var monthDropdown = jQuery(".contact-edit-birthdate-month");
 									var dateDropdown = jQuery(".contact-edit-birthdate-date");
 									var yearDropdown = jQuery(".contact-edit-birthdate-year");
+									monthDropdown.append( jQuery('<option value="1">Jan</option>'
+											+ '<option value="2">Feb</option>'
+											+ '<option value="3">Mar</option>'
+											+ '<option value="4">Apr</option>'
+											+ '<option value="5">May</option>'
+											+ '<option value="6">Jun</option>'
+											+ '<option value="7">Jul</option>'
+											+ '<option value="8">Aug</option>'
+											+ '<option value="9">Sep</option>'
+											+ '<option value="10">Oct</option>'
+											+ '<option value="11">Nov</option>'
+											+ '<option value="12">Dec</option>') );
 									for (var i = 1; i <= 31; i++) {
 										dateDropdown.append( jQuery('<option value="' + i + '">' + i + '</option>') );	
 									}
@@ -60,11 +57,17 @@
 									}
 								</script>
                             </div></div>
+            <div id="contact-edit-group-container">
+            	<div id="contact-edit-group-label">Groups</div>
+        		<button id="contact-edit-addgroupbutton">Add to Group</button>
+	        </div>
 			<div id="contact-edit-button-container">
-        <button id="contact-edit-cancelbutton">Cancel</button>
-        <button id="contact-edit-savebutton">Save</button>
+       			<button id="contact-edit-deletebutton">Delete</button>
+                <button id="contact-edit-cancelbutton">Cancel</button>
+        		<button id="contact-edit-savebutton">Save</button>
 	        </div>
         </div>
+<<<<<<< HEAD
         <!-- Adding a new contact. -->     
   <script>
   $(document).ready(function() {
