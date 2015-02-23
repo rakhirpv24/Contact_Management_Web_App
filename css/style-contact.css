@@ -306,6 +306,9 @@ Contact items in grid mode.
 	float: left;
 	overflow: hidden;
 }
+.contact-item-selected {
+	background-color:#C06 !important;
+}
 
 .contact-item-grid-image-container {
 	width: 180px;

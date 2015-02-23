@@ -34,7 +34,26 @@ var contactUtilities = new function() {
 	this.makeListGridItemString;
 	this.makeContactListItem;
 
-	/* Refreshes the list of contacts with the specfied list of contacts. */
+	/* 
+	Highlights the specified selected contact and de-highlights all others. 
+	@param selected The contact info for the selected user.
+	*/
+	this.highlightContact = function (selected) {
+		for (var i = 0; i < users.length; i++) {
+			var contact = users[i];
+			if (contact.firstName == selected.firstName && contact.lastName == selected.lastName) {
+				$(document.getElementById(this.getContactInfoId(contact))).addClass('contact-item-selected');
+			}
+			else {
+				$(document.getElementById(this.getContactInfoId(contact))).removeClass('contact-item-selected');
+			}
+		}
+	}
+	
+	/* 
+	Refreshes the list of contacts with the specfied list of contacts. 
+	Causes currently selected user to be highlighted on the contact list.
+	*/
 	this.refreshContactList = function(contacts) {
 		var contactListContainer = jQuery('#contact-list-container');
 		var contactList = jQuery('<ol class="contact-list"></ol>');
@@ -43,6 +62,10 @@ var contactUtilities = new function() {
 		for (var i = 0; i < contacts.length; i++) {
 			var contact = contacts[i];
 			this.addContactToList(contactList, contact);
+			// Highlight the contact if it is the currently selected one.
+			if(contact.firstName == globalContactInfo.firstName && contact.lastName == globalContactInfo.lastName) {
+				this.highlightContact(contact);
+			}
 		}
 	}
 	
@@ -123,7 +146,7 @@ var contactUtilities = new function() {
 		// When the delete button is clicked, delete the contact.
 		deleteButton.click(function(self) {
 			return function() {
-				 if (confirm("Are you sure you want to delete the contact?") == true) {
+				 if (confirm("Are you sure you want to remove '"+ globalContactInfo.firstName + " " + globalContactInfo.lastName +"' from your contact list?") == true) {
             
 					for (var i = 0; i < users.length; i++) {
 						var contact = users[i];
@@ -141,7 +164,8 @@ var contactUtilities = new function() {
 							break;
 						}				
 					}
-				   }
+					self.refreshContactList(users);
+				}
 			};
 		}(this));
 		
@@ -250,7 +274,10 @@ var contactUtilities = new function() {
 		contactItemElement = jQuery(contactItemHTML);
 		contactItemElement.click(function(self) {
 			return function() { 
-			self.showContactViewer(contactInfo) };
+				self.showContactViewer(contactInfo);
+				// Highlight the currently selected user.
+				self.highlightContact(contactInfo);
+			};
     	}(this));    
 		
 		return contactItemElement;
@@ -468,49 +495,52 @@ window.addEventListener('load', function(e) {
 		// Remove Ron Mak
 		users.splice(makIndex, 1);
 		*/
-
-		// When the delete button is clicked, delete the current viewed contact.
-		for (var i = 0; i < users.length; i++) {
-			var contact = users[i];
-			if(contact.firstName == globalContactInfo.firstName && contact.lastName == globalContactInfo.lastName) {
-				//var contactList = jQuery(document.getElementById("contact-list-id"));
-				//contactList.remove(document.getElementById(self.getContactInfoId(globalContactInfo)));
-				$(document.getElementById(contactUtilities.getContactInfoId(globalContactInfo))).remove();
-				users.splice(i,1);
-				if(i == (users.length)) {
-					// Display  0
-					contactUtilities.showContactViewer(users[0]);
-				} else {
-					contactUtilities.showContactViewer(users[i]);
-				}
-				break;
-			}				
+		// When the delete button is clicked, delete the current viewed contact if confirmed.
+		if (confirm("Are you sure you want to remove '"+ globalContactInfo.firstName + " " + globalContactInfo.lastName +"' from your contact list?")) {
+			for (var i = 0; i < users.length; i++) {
+				var contact = users[i];
+			 
+				if(contact.firstName == globalContactInfo.firstName && contact.lastName == globalContactInfo.lastName) {
+					//var contactList = jQuery(document.getElementById("contact-list-id"));
+					//contactList.remove(document.getElementById(self.getContactInfoId(globalContactInfo)));
+					$(document.getElementById(contactUtilities.getContactInfoId(globalContactInfo))).remove();
+					users.splice(i,1);
+					if(i == (users.length)) {
+						// Display  0
+						contactUtilities.showContactViewer(users[0]);
+					} else {
+						contactUtilities.showContactViewer(users[i]);
+					}
+					break;
+				}	
+			 }
 		} 
-		
-		
 		contactUtilities.hideContactEditor();
 		contactUtilities.refreshContactList(users);
-		// Show next contact if it exists, otherwise contact above Ron Mak.
-		contactUtilities.showContactViewer( users[makIndex] || users[makIndex - 1] );
 	});
 	// Add contact stuff
 	jQuery('#contact-add-savebutton').click(function(){
-	users.push({firstName: document.getElementById("addcontact-firstname").value, 
-	lastName: document.getElementById("addcontact-lastname").value, 
-	email: document.getElementById("addcontact-email").value, 
-	cell: document.getElementById("addcontact-phone").value, 
-	photo: "images/no-image.png", 
-	birthdate: document.getElementById("addcontact-dob").value, 
-	homeAddress: document.getElementById("addcontact-homeaddress").value, 
-	workAddress: document.getElementById("addcontact-officeaddress").value});
-	
-	var contactList = jQuery(document.getElementById("contact-list-id"));
-	contactUtilities.addContactToList(contactList, users[users.length-1]);
+		users.push({firstName: document.getElementById("addcontact-firstname").value, 
+		lastName: document.getElementById("addcontact-lastname").value, 
+		email: document.getElementById("addcontact-email").value, 
+		cell: document.getElementById("addcontact-phone").value, 
+		photo: "images/no-image.png", 
+		birthdate: document.getElementById("addcontact-dob").value, 
+		homeAddress: document.getElementById("addcontact-homeaddress").value, 
+		workAddress: document.getElementById("addcontact-officeaddress").value});
+		
+		var contactList = jQuery(document.getElementById("contact-list-id"));
+		contactUtilities.addContactToList(contactList, users[users.length-1]);
 
 		contactUtilities.hideContactAdder();
+		// Refresh cotnact list.
+		contactUtilities.refreshContactList(users);
 	});
 	jQuery('#contact-add-cancelbutton').click(function(){
 		contactUtilities.hideContactAdder();
+		// Refresh Contact List
+		contactUtilities.refreshContactList(users);
+		
 	});
 	
-});
+});  // End of add event listener
