@@ -72,60 +72,66 @@
         		<button id="contact-edit-savebutton">Save</button>
 	        </div>
         </div>
-        <!-- Adding a new contact. -->
-        <div id="contact-adder" class="contact-adder-inactive">
-            <div id="contact-add-name-container" ><input type="text" class="contact-add-name-textfield" placeholder="First name" value=""/> <input type="text" class="contact-add-name-textfield" placeholder="Last name" value="" /></div>
-                <div class="contact-add-image-container clickable" title="Click to choose a photo"><img class="contact-add-image" src="images/no-image.png" alt="A Contact" /></div>
-                <div class="contact-add-phonenumber-container"><div class="contact-add-phonenumber-label label-phonenumber">cell</div><input type="text" placeholder="phone number"  value=""/></div>
-                <div class="contact-add-emailaddress-container "><div class="contact-add-emailaddress-label label-emailaddress">email</div><input type="text" placeholder="email address" value="" /></div>
-                <div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress"><textarea rows="4" cols="22"></textarea></div></div>
-							<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress"><textarea rows="4" cols="22"></textarea></div></div>
-							<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">
-                            	<select class="contact-edit-birthdate-month"></select>
-                                <select class="contact-edit-birthdate-date"></select>
-                                <select class="contact-edit-birthdate-year"></select>
-                                <script type="text/javascript">
-									// Populate the month, date and year dropdown menus.
-									var monthDropdown = jQuery(".contact-edit-birthdate-month");
-									var dateDropdown = jQuery(".contact-edit-birthdate-date");
-									var yearDropdown = jQuery(".contact-edit-birthdate-year");
-									monthDropdown.append( jQuery('<option value="1">Jan</option>'
-											+ '<option value="2">Feb</option>'
-											+ '<option value="3">Mar</option>'
-											+ '<option value="4">Apr</option>'
-											+ '<option value="5">May</option>'
-											+ '<option value="6">Jun</option>'
-											+ '<option value="7">Jul</option>'
-											+ '<option value="8">Aug</option>'
-											+ '<option value="9">Sep</option>'
-											+ '<option value="10">Oct</option>'
-											+ '<option value="11">Nov</option>'
-											+ '<option value="12">Dec</option>') );
-									for (var i = 1; i <= 31; i++) {
-										dateDropdown.append( jQuery('<option value="' + i + '">' + i + '</option>') );	
-									}
-									for (var i = 2015; i >= 1850; i--) {
-										yearDropdown.append( jQuery('<option value="' + i + '">' + i + '</option>') );	
-									}
-								</script>
-                            </div></div>
-            <div id="contact-edit-group-container">
+
+      <!-- Adding a new contact. -->     
+	  <script>
+      $(document).ready(function() {
+        $("#addcontact-dob").datepicker();
+      });
+      </script>
+      <!-- Adding a new contact. -->
+      <div id="contact-adder" class="contact-adder-inactive"> 
+      	<div class="contact-add-image-container clickable" title="Click to choose a photo"><img class="contact-add-image" src="images/no-image.png" alt="A Contact" /></div>
+        <div>
+          <p>
+            <label><strong>First Name: </strong></label>
+            <input type="text" id = "addcontact-firstname" name="addcontact-firstname" value="" placeholder="First Name" align="right" autofocus>
+          </p>
+          <p>
+            <label><strong>Last Name: </strong></label>
+            <input type="text" id = "addcontact-lastname" name="addcontact-lastname" value="" placeholder="Last Name" align="right">
+          </p>
+          <p>
+            <label><strong>Email ID: </strong></label>
+            <input type="text" id = "addcontact-email" name="addcontact-email" value="" placeholder="Email ID" align="right">
+          </p>
+          <p>
+            <label><strong>Phone Number: </strong></label>
+            <input type="text" id = "addcontact-phone" name="addcontact-phone" value="" placeholder="Phone Number" align="right">
+          </p>
+          <p>
+            <label><strong>Date of Birth: </strong></label>
+            <input type="text" id = "addcontact-dob" name="addcontact-dob" value="" placeholder="Date Of Birth" align="right">
+          </p>
+          <p>
+            <label><strong>Home Address: </strong></label>
+            <input type="text" id = "addcontact-homeaddress" name="addcontact-homeaddress" value="" placeholder="Residential Address" align="right">
+          </p>
+          <p>
+            <label><strong>Office Address: </strong></label>
+            <input type="text" id = "addcontact-officeaddress" name="officeaddress" value="" placeholder="Office Address" align="right">
+          </p>
+        </div>
+        <div id="contact-add-button-container">
+          <p class="submit">
+            <input type="submit"  value="Save" align="right" id = "contact-add-savebutton">
+            <input type="submit"  value="Cancel" align="right" id = "contact-add-cancelbutton">
+          </p>
+        </div>
+        
+        <div id="contact-edit-group-container">
             	<div id="contact-edit-group-label">Groups</div>
         		<button id="contact-edit-addgroupbutton">Add to Group</button>
 	        </div>
-			<div id="contact-add-button-container">
-        		<button id="contact-add-cancelbutton">Cancel</button>
-        		<button id="contact-add-savebutton">Save</button>
-	        </div>
-        </div>
-        <!--
-        Group List
-        -->
-        <div id="group-list" class="group-list-inactive">
-            <button id="contact-panel-addbutton">add group</button>
-            <span id="group-panel-label">Groups</span>
-            <div id="group-list-container"></div>
-        </div>
-    </div>
+      </div>
+    
+        
+  <!-- Group List -->
+  <div id="group-list" class="group-list-inactive">
+    <button id="contact-panel-addbutton">add group</button>
+    <span id="group-panel-label">Groups</span>
+    <div id="group-list-container"></div>
+  </div>
+</div>
 </body>
 </html>

@@ -450,6 +450,12 @@ Contact View - view the contact info.
 	height: 100vh;
 }
 
+#contact-view-delete{
+	position: relative;
+    left: 80%;
+    top: 10%;
+}
+
 .contact-viewer-inactive {
 	display: none;	
 }
@@ -677,7 +683,7 @@ Contact editor.
 	height: 256px;
 	overflow:hidden;
 	position:absolute;
-	left: 4px;
+	left: 340px;
 	top: 4px;
 }
 #contact-add-button-container {
