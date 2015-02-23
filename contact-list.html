@@ -5,6 +5,10 @@
 <link rel="stylesheet" type="text/css" href="css/style-contact.css">
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/contact-list.js"></script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
 <title>Your Contacts</title>
 </head>
 
@@ -73,60 +77,57 @@
 	        </div>
         </div>
 
-      <!-- Adding a new contact. -->     
-	  <script>
-      $(document).ready(function() {
-        $("#addcontact-dob").datepicker();
-      });
-      </script>
-      <!-- Adding a new contact. -->
-      <div id="contact-adder" class="contact-adder-inactive"> 
-      	<div class="contact-add-image-container clickable" title="Click to choose a photo"><img class="contact-add-image" src="images/no-image.png" alt="A Contact" /></div>
-        <div>
-          <p>
-            <label><strong>First Name: </strong></label>
-            <input type="text" id = "addcontact-firstname" name="addcontact-firstname" value="" placeholder="First Name" align="right" autofocus>
-          </p>
-          <p>
-            <label><strong>Last Name: </strong></label>
-            <input type="text" id = "addcontact-lastname" name="addcontact-lastname" value="" placeholder="Last Name" align="right">
-          </p>
-          <p>
-            <label><strong>Email ID: </strong></label>
-            <input type="text" id = "addcontact-email" name="addcontact-email" value="" placeholder="Email ID" align="right">
-          </p>
-          <p>
-            <label><strong>Phone Number: </strong></label>
-            <input type="text" id = "addcontact-phone" name="addcontact-phone" value="" placeholder="Phone Number" align="right">
-          </p>
-          <p>
-            <label><strong>Date of Birth: </strong></label>
-            <input type="text" id = "addcontact-dob" name="addcontact-dob" value="" placeholder="Date Of Birth" align="right">
-          </p>
-          <p>
-            <label><strong>Home Address: </strong></label>
-            <input type="text" id = "addcontact-homeaddress" name="addcontact-homeaddress" value="" placeholder="Residential Address" align="right">
-          </p>
-          <p>
-            <label><strong>Office Address: </strong></label>
-            <input type="text" id = "addcontact-officeaddress" name="officeaddress" value="" placeholder="Office Address" align="right">
-          </p>
-        </div>
-        <div id="contact-add-button-container">
-          <p class="submit">
-            <input type="submit"  value="Save" align="right" id = "contact-add-savebutton">
-            <input type="submit"  value="Cancel" align="right" id = "contact-add-cancelbutton">
-          </p>
-        </div>
-        
-        <div id="contact-edit-group-container">
-            	<div id="contact-edit-group-label">Groups</div>
-        		<button id="contact-edit-addgroupbutton">Add to Group</button>
-	        </div>
-      </div>
-    
-        
-  <!-- Group List -->
+
+        <!-- Adding a new contact. -->     
+  <script>
+  $(function() {
+    $("#addcontact-dob").datepicker();
+  });
+  </script>
+  <!-- Adding a new contact. -->
+  <div id="contact-adder" class="contact-adder-inactive"> 
+  	<div class="contact-add-image-container clickable" title="Click to choose a photo"><img class="contact-add-image" src="images/no-image.png" alt="A Contact" /></div>
+    <div>
+      <p>
+        <label><strong>First Name: </strong></label>
+        <input type="text" id = "addcontact-firstname" name="addcontact-firstname" value="" placeholder="First Name" align="right" autofocus>
+      </p>
+      <p>
+        <label><strong>Last Name: </strong></label>
+        <input type="text" id = "addcontact-lastname" name="addcontact-lastname" value="" placeholder="Last Name" align="right">
+      </p>
+      <p>
+        <label><strong>Email ID: </strong></label>
+        <input type="text" id = "addcontact-email" name="addcontact-email" value="" placeholder="Email ID" align="right">
+      </p>
+      <p>
+        <label><strong>Phone Number: </strong></label>
+        <input type="text" id = "addcontact-phone" name="addcontact-phone" value="" placeholder="Phone Number" align="right">
+      </p>
+      <p>
+        <label><strong>Date of Birth: </strong></label>
+        <input type="text" id = "addcontact-dob" name="addcontact-dob" value="" placeholder="Date Of Birth" align="right">
+      </p>
+      <p>
+        <label><strong>Home Address: </strong></label>
+        <input type="text" id = "addcontact-homeaddress" name="addcontact-homeaddress" value="" placeholder="Residential Address" align="right">
+      </p>
+      <p>
+        <label><strong>Office Address: </strong></label>
+        <input type="text" id = "addcontact-officeaddress" name="officeaddress" value="" placeholder="Office Address" align="right">
+      </p>
+    </div>
+    <div>
+      <p class="submit">
+        <input type="submit"  value="Save" align="right" id = "contact-add-savebutton">
+        <input type="submit"  value="Cancel" align="right" id = "contact-add-cancelbutton">
+      </p>
+    </div>
+  </div>
+  <!--
+        Group List
+        -->
+>>>>>>> 1ee342da358eeb3e51518c9424ed0ac4ee60b1e4
   <div id="group-list" class="group-list-inactive">
     <button id="contact-panel-addbutton">add group</button>
     <span id="group-panel-label">Groups</span>
