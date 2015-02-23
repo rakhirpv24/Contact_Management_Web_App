@@ -435,6 +435,13 @@ window.addEventListener('load', function(e) {
 	// Init lists.
 	initContactList();
 	initGroupList();
+	// Make tabs show the appropriate panel.
+	jQuery('#tab-contacts').click(function() {
+		contactUtilities.showContactPanelFullOnly();
+	});
+	jQuery('#tab-groups').click(function() {
+		contactUtilities.showGroupListOnly();
+	});
 	// Stuff
 	jQuery('#contact-panel-addbutton').click(function(){
 		contactUtilities.showContactAdder();

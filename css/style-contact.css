@@ -21,6 +21,13 @@ Universal styles for labels, e.g. "email", "phone number".
 And other universal styles.
 */
 
+#tabs-menu {
+	text-align: center;	
+}
+#tab-contacts, #tab-groups, #tab-history, #tab-myprofile{
+	display: inline;
+}
+ 
 /* NOTE: You need to specifiy a width for the elements using this class.*/
 .label-emailaddress, .label-phonenumber, .label-homeaddress, .label-workaddress, .label-birthdate {
 	text-align:right;
