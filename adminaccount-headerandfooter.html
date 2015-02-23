@@ -8,48 +8,50 @@
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
 <script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js" type="text/javascript"></script>
 <style type="text/css">
-  #footer {
+  footer {
     position : absolute;
     bottom : 0;
     height : 40px;
     margin-top : 40px;
+	width:auto;
+	align-content:center;
   }
   
+  form {
+    float:right; 
+}
+
 </style>
+
+
 </head>
 
-<body onLoad="startTime(5);">
+<body>
 <!-- Header content -->
 <header>
+<table >
+<tr >
+<td>
   <div class="profileLogo" align="left"> 
-    <!-- Profile logo. Add a img tag in place of <span>. -->
-   
     <h1>Contact Manager <img src="images/logo.png" height="95" width="115" align = "left"></img></h1>
     <p>Manage your contacts without hassle</p>
-    </div>
-  <div align="right">
-    <button type="button" onClick="window.location.href = 'signUp.html'">SignUp</button>
-    <button type="button" onClick="window.location.href = 'Login.html'">Login</button>
-    </div>
-  
-   <hr>
-   
-</header>
-   <div class = "dynamicPictures" align="right">
-	<img id="img1" src = "images/dynamicImage3.png";
-</div>
-  <div class="appInfo"
-  
   </div>
+</td>
+<td>
+    <div class="adminInfo" align="right" > 
+    <h3>Welcome admin!! <input type="submit" name="Signout" value="Signout" onClick="window.location.href='Login.html'"></input></h3>
+    </div>
+</td>
+    </tr>
+    </table>
+</header>
+  <hr>
   
-<div id = "footer" class="footerNote">
-<footer >
+  <div id = "footer" class="footerNote">
+  <footer >
 	<div>  <a href=""> About </a> | <a href=""> FAQ </a> | <a href=""> Mobile </a> | <a href=""> Developers </a> |<a href=""> Terms </a> | <a href=""> Privacy </a> | <a href=""> Help </a> | <a href=""> Feedback </a>   </div>
     <div> <center>   Contact Management &copy; 2015    </center></div>
 	</footer>
-</div>
-
-<script src = "js/dynamicPictures.js"></script>
-
+    </div>
 </body>
 </html>
