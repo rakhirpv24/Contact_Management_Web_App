@@ -14,9 +14,9 @@ var users = [
 	}];
 
 var groups = [
-	{name: "Friends", photo: "images/obama2.jpg"},
-	{name: "Coworkers", photo: "images/ron.jpg"},
-	{name: "Important", photo: "images/obama.jpg"}
+	{name: "Friends", photo: "images/group1.png"},
+	{name: "Coworkers", photo: "images/group2.png"},
+	{name: "Important", photo: "images/group3.png"}
 ];
 
 // Default contact info.
@@ -129,15 +129,42 @@ var contactUtilities = new function() {
 	this.makeContactDisplayPanelString = function(contactInfo) {
 		var str;
 		return '<div class="contact-view">'
-                           + '<div class="contact-view-name">' + contactInfo.firstName + ' ' + contactInfo.lastName + '</div>'
-                           + '<div class="contact-view-image-container"><img class="contact-view-image" src="' + contactInfo.photo + '" alt="A Contact" /></div>'
-                           + '<button type="button" class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber"><img src="images/call.png" alt="call" /></div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div></button>'
-                            + '<a href="mailto:'+ contactInfo.email +'"><button type="button" class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress"><img src="images/email.png" alt="email" /></div><div class="contact-view-emailaddress">' + contactInfo.email +'</div></button></a>'
-							+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
-							+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
-							+ '<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">' + contactInfo.birthdate +'</div></div>'
+				   + '<div class="contact-view-name">' + contactInfo.firstName + ' ' + contactInfo.lastName + '</div>'
+				   + '<div class="contact-view-image-container"><img class="contact-view-image" src="' + contactInfo.photo + '" alt="A Contact" /></div>'
+				   + '<button type="button" class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber"><img src="images/call.png" alt="call" /></div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div></button>'
+					+ '<a href="mailto:'+ contactInfo.email +'"><button type="button" class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress"><img src="images/email.png" alt="email" /></div><div class="contact-view-emailaddress">' + contactInfo.email +'</div></button></a>'
+					+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
+					+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
+					+ '<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">' + contactInfo.birthdate +'</div></div>'
+					+ '<div id="contact-view-group-container">'
+            		+ '<div id="contact-view-group-label">Groups</div>'
+					+ this.makeContactViewGroupItemString(groups[0])
+					+ this.makeContactViewGroupItemString(groups[1])
+	        	+ '</div>'
             + '</div>';
-	}
+	};
+	
+	// Returns the HTML string for the group item for use in the Contact View page.
+	this.makeContactViewGroupItemString = function(info) {
+		return '<div class="contact-view-group-item">'
+						+ '<div class="contact-view-group-item-on-click clickable"></div>'
+						+ '<div class="contact-view-group-item-image-container"><img class="contact-view-group-item-image" src="'+ info.photo +'" alt="'+ info.name +'" /></div>'
+						+ '<div class="contact-view-group-item-label-container">'
+						+ '<div class="contact-view-group-item-name">'+ info.name + '</div>'
+                        + '</div>'
+                        +'</div>';
+	};
+	
+	// Returns the HTML string for the group item for use in the Contact Edit page.
+	this.makeContactEditGroupItemString = function(info) {
+		return '<div class="contact-edit-group-item">'
+						+ '<div class="contact-view-group-item-on-click clickable"></div>'
+						+ '<div class="contact-view-group-item-image-container"><img class="contact-edit-group-remove-label" src="images/group-remove-label.png" alt="Remove group" /><img class="contact-view-group-item-image" src="'+ info.photo +'" alt="'+ info.name +'" /></div>'
+						+ '<div class="contact-view-group-item-label-container">'
+						+ '<div class="contact-view-group-item-name">'+ info.name + '</div>'
+                        + '</div>'
+                        +'</div>';
+	};
 	
 	/* Makes the contact viewer editable. */
 	this.showContactEditor = function(contactInfo) {

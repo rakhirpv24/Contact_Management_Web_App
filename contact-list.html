@@ -59,7 +59,12 @@
                             </div></div>
             <div id="contact-edit-group-container">
             	<div id="contact-edit-group-label">Groups</div>
-        		<button id="contact-edit-addgroupbutton">Add to Group</button>
+                <script type="text/javascript">
+				var groupContainer = jQuery('#contact-edit-group-container');
+				groupContainer.append( jQuery(contactUtilities.makeContactEditGroupItemString(groups[0])) );
+				groupContainer.append( jQuery(contactUtilities.makeContactEditGroupItemString(groups[1])) );
+				groupContainer.append( jQuery('<button id="contact-edit-addgroupbutton">Add to Group</button>') );	
+				</script>
 	        </div>
 			<div id="contact-edit-button-container">
        			<button id="contact-edit-deletebutton">Delete</button>
@@ -104,9 +109,9 @@
 									}
 								</script>
                             </div></div>
-            <div id="contact-add-group-container">
-            	<div id="contact-add-group-label">Groups</div>
-        		<button id="contact-add-addgroupbutton">Add to Group</button>
+            <div id="contact-edit-group-container">
+            	<div id="contact-edit-group-label">Groups</div>
+        		<button id="contact-edit-addgroupbutton">Add to Group</button>
 	        </div>
 			<div id="contact-add-button-container">
         		<button id="contact-add-cancelbutton">Cancel</button>

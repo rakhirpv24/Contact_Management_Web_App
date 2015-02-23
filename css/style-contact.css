@@ -27,7 +27,8 @@ And other universal styles.
 }
 
 .clickable {
-	cursor:pointer;  /* makes cursor indicate clickability */	
+	cursor:pointer;  /* makes cursor indicate clickability */
+	z-index: 1;
 }
 
 
@@ -520,7 +521,6 @@ Contact View - view the contact info.
 	font: 20px arial, sans-serif;
 }
 
-
 .contact-view-phonenumber-label, .contact-view-emailaddress-label, .contact-view-birthdate-label, .contact-view-homeaddress-label, .contact-view-workaddress-label {
 	padding-right: 5px;
 	padding-left: 0;
@@ -531,6 +531,43 @@ Contact View - view the contact info.
 	overflow:visible;
 }
 
+#contact-view-group-container {
+	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
+	top: 70vh;
+	left: 300px;
+}
+
+.contact-view-group-item {
+	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
+	margin: 2px;
+	background-color:#FCF;
+	height: 128px;
+	width: 128px;
+	float: left;
+	overflow: hidden;
+}
+.contact-view-group-item-on-click {
+	position:absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+}
+.contact-view-group-item-image {
+	width: 128px;
+	height: 128px;
+}
+.contact-view-group-item-image-container {
+	position:absolute;
+	top:0;
+	left:0;	
+}
+.contact-view-group-item-label-container {
+	position: absolute;
+	vertical-align: bottom;
+	top: 110px;
+	left:0px;
+}
 
 /*
 
@@ -560,6 +597,56 @@ Contact editor.
 }
 #contact-edit-cancelbutton {
 	background-color:#F6F; 
+}
+
+#contact-edit-group-container {
+	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
+	top: 70vh;
+	left: 300px;
+}
+
+.contact-edit-group-item {
+	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
+	margin: 2px;
+	background-color:#FCF;
+	height: 128px;
+	width: 128px;
+	float: left;
+	overflow: hidden;
+}
+.contact-edit-group-item-on-click {
+	position:absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+}
+.contact-edit-group-item-image {
+	width: 128px;
+	height: 128px;
+}
+.contact-edit-group-item-image-container {
+	position:absolute;
+	top:0;
+	left:0;	
+}
+.contact-edit-group-remove-label {
+	display: none;
+	width: 128px;
+	height: 128px;
+	z-index: 1;
+}
+/* Show label for indicating removing group. */
+.contact-edit-group-item:hover .contact-edit-group-remove-label, 
+.contact-edit-group-item.hover .contact-edit-group-remove-label {
+	display: initial !important; 
+}
+
+.contact-edit-group-item-label-container {
+	position: absolute;
+	vertical-align: bottom;
+	top: 110px;
+	left:0px;
 }
 
 
