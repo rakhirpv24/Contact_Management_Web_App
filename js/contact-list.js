@@ -122,22 +122,25 @@ var contactUtilities = new function() {
 		// When the delete button is clicked, delete the contact.
 		deleteButton.click(function(self) {
 			return function() {
-				for (var i = 0; i < users.length; i++) {
-					var contact = users[i];
-					if(contact.firstName == globalContactInfo.firstName && contact.lastName == globalContactInfo.lastName) {
-						//var contactList = jQuery(document.getElementById("contact-list-id"));
-						//contactList.remove(document.getElementById(self.getContactInfoId(globalContactInfo)));
-						$(document.getElementById(self.getContactInfoId(globalContactInfo))).remove();
-						users.splice(i,1);
-						if(i == (users.length)) {
-							// Display  0
-							self.showContactViewer(users[0]);
-						} else {
-							self.showContactViewer(users[i]);
-						}
-						break;
-					}				
-				} 
+				 if (confirm("Are you sure you want to delete the contact?") == true) {
+            
+					for (var i = 0; i < users.length; i++) {
+						var contact = users[i];
+						if(contact.firstName == globalContactInfo.firstName && contact.lastName == globalContactInfo.lastName) {
+							//var contactList = jQuery(document.getElementById("contact-list-id"));
+							//contactList.remove(document.getElementById(self.getContactInfoId(globalContactInfo)));
+							$(document.getElementById(self.getContactInfoId(globalContactInfo))).remove();
+							users.splice(i,1);
+							if(i == (users.length)) {
+								// Display  0
+								self.showContactViewer(users[0]);
+							} else {
+								self.showContactViewer(users[i]);
+							}
+							break;
+						}				
+					}
+				   }
 			};
 		}(this));
 		
