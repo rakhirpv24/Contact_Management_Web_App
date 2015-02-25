@@ -9,15 +9,15 @@ var users = [
 	{firstName: "Ron2", lastName: "Mak2", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
 	{firstName: "Ron3", lastName: "Mak3", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
 	{firstName: "Ron4", lastName: "Mak4", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Doublecheese", lastName: "Burger", email: "mcdonalds@sjsu.edu", cell: "(408)555-1234", photo: "images/burger.png", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "French", lastName: "Fries", email: "fries@sjsu.edu", cell: "(408)555-1234", photo: "images/fries.png", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"
+	{firstName: "Ron5", lastName: "Mak5", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
+	{firstName: "Ron654321", lastName: "Mak654321", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"
 	}];
 var globalContactInfo;
 
 var groups = [
-	{name: "Friends", photo: "images/group1.jpg"},
-	{name: "Coworkers", photo: "images/group2.jpg"},
-	{name: "Important", photo: "images/group3.jpg"}
+	{name: "Friends", photo: "images/group1.png"},
+	{name: "Coworkers", photo: "images/group2.png"},
+	{name: "Important", photo: "images/group3.png"}
 ];
 
 // Default contact info.
@@ -77,8 +77,6 @@ var contactUtilities = new function() {
 		this.hideContactViewer();
 		this.hideContactEditor();
 		this.hideContactAdder();
-		this.hideGroupViewer();
-		this.hideGroupEditor();
 	}
 	
 	/* Show contact list. */
@@ -97,37 +95,11 @@ var contactUtilities = new function() {
 		this.hideContactViewer();
 		this.hideContactEditor();
 		this.hideContactAdder();
-		this.hideGroupViewer();
-		this.hideGroupEditor();
 	}
-	/* Show group list as full grid. */
+	/* Show group list. */
 	this.showGroupList = function() {
 		jQuery('#group-list').removeClass("group-list-inactive");
-		jQuery('#group-list').removeClass("group-list-thin");
 	}
-	this.showGroupListThin = function() {
-		jQuery('#group-list').addClass("group-list-thin");
-		jQuery('#group-list').removeClass("group-list-inactive");
-	};
-	
-	this.showGroupViewer = function() {
-		this.hideGroupEditor();
-		this.showGroupListThin();
-		jQuery('#group-viewer').removeClass("group-viewer-inactive");
-	}
-	this.hideGroupViewer = function() {
-		jQuery('#group-viewer').addClass("group-viewer-inactive");
-	}
-	
-	this.showGroupEditor = function() {
-		this.hideGroupViewer();
-		this.showGroupListThin();
-		jQuery('#group-editor').removeClass("group-editor-inactive");
-	}
-	this.hideGroupEditor = function() {
-		jQuery('#group-editor').addClass("group-editor-inactive");
-	}
-	
 	/* HIde group list. */
 	this.hideGroupList = function() {
 		jQuery('#group-list').addClass("group-list-inactive");
@@ -393,9 +365,8 @@ var contactUtilities = new function() {
 	
 	// Returns the HTML string for the group item, with classes for the grid format.
 	this.makeGroupListGridItemString = function(info) {
-		// FIXME: This uses some incorrect classes. Fix them if it is a problem.
 		return '<div class="contact-item-grid">'
-						+ '<div class="group-item-on-click"></div>'
+						+ '<div class="contact-item-grid-view-on-click"></div>'
 						+ '<div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="'+ info.photo +'" alt="'+ info.name +'\'s image" /></div>'
 						+ '<div class="contact-item-grid-label-container">'
 						+ '<div class="contact-item-grid-name">'+ info.name + '</div>'
@@ -498,7 +469,6 @@ window.addEventListener('load', function(e) {
 	jQuery('#tab-groups').click(function() {
 		contactUtilities.showGroupListOnly();
 	});
-	
 	// Stuff
 	jQuery('#contact-panel-addbutton').click(function(){
 		contactUtilities.showContactAdder();
@@ -571,14 +541,6 @@ window.addEventListener('load', function(e) {
 		// Refresh Contact List
 		contactUtilities.refreshContactList(users);
 		
-	});
-	
-	// Group click events.
-	$('.group-item-on-click').click(function(){
-		contactUtilities.showGroupViewer();
-	});
-	$('#group-view-editbutton').click(function(){
-		contactUtilities.showGroupEditor();
 	});
 	
 });  // End of add event listener

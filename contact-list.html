@@ -20,10 +20,6 @@
     	<!-- Contact List -->
         <div id="contact-panel">
             <button id="contact-panel-addbutton">add contact</button>
-            <form action="#" onsubmit="return false;" id="contact-search-form">
-                <input type="text" id="contact-search-input"/>
-                <button id="contact-search-submit">Search</button>
-            </form>
             <span id="contact-panel-label">Contacts</span>
     
             <div id="contact-list-container"></div>
@@ -34,7 +30,7 @@
         <!-- Editor for editing contact info. -->
         <div id="contact-editor" class="contact-editor-inactive">
             <div id="contact-add-name-container" ><input type="text" class="contact-add-name-textfield" placeholder="First name" value="Ron"/> <input type="text" class="contact-add-name-textfield" placeholder="Last name" value="Mak" /></div>
-                <div class="contact-edit-image-container clickable"><img class="contact-add-photo-edit-label" src="images/photo-edit-label.png" alt="Select a photo" /><img class="contact-view-image" src="images/ron.jpg" alt="A Contact" /></div>
+                <div class="contact-add-image-container clickable"><img class="contact-add-photo-edit-label" src="images/photo-edit-label.png" alt="Select a photo" /><img class="contact-view-image" src="images/ron.jpg" alt="A Contact" /></div>
                 <div class="contact-view-phonenumber-container"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><input type="text" placeholder="phone number"  value="(408)555-1234"/></div>
                 <div class="contact-view-emailaddress-container "><div class="contact-view-emailaddress-label label-emailaddress">email</div><input type="text" placeholder="email address" value="ron.mak@sjsu.edu" /></div>
                 <div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress"><textarea rows="4" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
@@ -140,59 +136,8 @@
     <span id="group-panel-label">Groups</span>
     <div id="group-list-container"></div>
   </div>
-  <!-- Group Viewer -->
-  <div id="group-viewer" class="group-viewer-inactive">
-        <div>
-            <div class="group-view">
-                <div class="group-view-image-container">
-                    <img class="group-view-image" src="images/group1.jpg" alt="Group" />
-                </div>
-                <div class="group-view-name"><h2>Friends</h2>
-                </div>
-            </div>
-            <button id="group-view-delete">delete group</button>
-            <button id="group-view-editbutton">edit</button>
-            <div id="group-view-contact-list-container">
-                <ol id="group-contact-list-id" class="contact-list"><li><div id="Barack_Obama" class="contact-item-grid"><div class="contact-item-grid-view-on-click"></div><div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="images/obama.jpg" alt="Barack's image"></div><div class="contact-item-grid-label-container"><div class="contact-item-grid-name">Barack Obama</div></div><div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call Barack"><img src="images/call.png" alt="call"></button><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email Barack"><img src="images/email.png" alt="email"></button><div class="contact-item-grid-emailaddress"><a href="mailto:obama@sjsu.edu">obama@sjsu.edu</a></div></div></div></li><li><div id="Barack2_Obama2" class="contact-item-grid"><div class="contact-item-grid-view-on-click"></div><div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="images/obama2.jpg" alt="Barack2's image"></div><div class="contact-item-grid-label-container"><div class="contact-item-grid-name">Barack2 Obama2</div></div><div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call Barack2"><img src="images/call.png" alt="call"></button><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email Barack2"><img src="images/email.png" alt="email"></button><div class="contact-item-grid-emailaddress"><a href="mailto:obama2@sjsu.edu">obama2@sjsu.edu</a></div></div></div></li><li><div id="Ron_Mak" class="contact-item-grid"><div class="contact-item-grid-view-on-click"></div><div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="images/ron.jpg" alt="Ron's image"></div><div class="contact-item-grid-label-container"><div class="contact-item-grid-name">Ron Mak</div></div><div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call Ron"><img src="images/call.png" alt="call"></button><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email Ron"><img src="images/email.png" alt="email"></button><div class="contact-item-grid-emailaddress"><a href="mailto:ron.mak@sjsu.edu">ron.mak@sjsu.edu</a></div></div></div></li><li><div id="Ron2_Mak2" class="contact-item-grid"><div class="contact-item-grid-view-on-click"></div><div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="images/ron.jpg" alt="Ron2's image"></div><div class="contact-item-grid-label-container"><div class="contact-item-grid-name">Ron2 Mak2</div></div><div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call Ron2"><img src="images/call.png" alt="call"></button><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email Ron2"><img src="images/email.png" alt="email"></button><div class="contact-item-grid-emailaddress"><a href="mailto:ron.mak@sjsu.edu">ron.mak@sjsu.edu</a></div></div></div></li><li><div id="Ron3_Mak3" class="contact-item-grid"><div class="contact-item-grid-view-on-click"></div><div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="images/ron.jpg" alt="Ron3's image"></div><div class="contact-item-grid-label-container"><div class="contact-item-grid-name">Ron3 Mak3</div></div><div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call Ron3"><img src="images/call.png" alt="call"></button><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email Ron3"><img src="images/email.png" alt="email"></button><div class="contact-item-grid-emailaddress"><a href="mailto:ron.mak@sjsu.edu">ron.mak@sjsu.edu</a></div></div></div></li><li><div id="Ron4_Mak4" class="contact-item-grid"><div class="contact-item-grid-view-on-click"></div><div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="images/ron.jpg" alt="Ron4's image"></div><div class="contact-item-grid-label-container"><div class="contact-item-grid-name">Ron4 Mak4</div></div><div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call Ron4"><img src="images/call.png" alt="call"></button><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email Ron4"><img src="images/email.png" alt="email"></button><div class="contact-item-grid-emailaddress"><a href="mailto:ron.mak@sjsu.edu">ron.mak@sjsu.edu</a></div></div></div></li><li><div id="Ron5_Mak5" class="contact-item-grid"><div class="contact-item-grid-view-on-click"></div><div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="images/ron.jpg" alt="Ron5's image"></div><div class="contact-item-grid-label-container"><div class="contact-item-grid-name">Ron5 Mak5</div></div><div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call Ron5"><img src="images/call.png" alt="call"></button><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email Ron5"><img src="images/email.png" alt="email"></button><div class="contact-item-grid-emailaddress"><a href="mailto:ron.mak@sjsu.edu">ron.mak@sjsu.edu</a></div></div></div></li><li><div id="Ron654321_Mak654321" class="contact-item-grid"><div class="contact-item-grid-view-on-click"></div><div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="images/ron.jpg" alt="Ron654321's image"></div><div class="contact-item-grid-label-container"><div class="contact-item-grid-name">Ron654321 Mak654321</div></div><div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call Ron654321"><img src="images/call.png" alt="call"></button><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email Ron654321"><img src="images/email.png" alt="email"></button><div class="contact-item-grid-emailaddress"><a href="mailto:ron.mak@sjsu.edu">ron.mak@sjsu.edu</a></div></div></div></li>
-                </ol>
-            </div>
-        </div>
-    </div>
   
   
-  
-    <!-- Group Editor -->
-    <div id="group-editor" class="group-editor-inactive">
-        <label><strong>Group Name</strong></label>
-        <input type="text" id = "addgroup-name" name="addgroup-name" value="Friends" placeholder="Group Name" align="right" >
-        <div class="group-edit-image-container clickable"><img class="contact-add-photo-edit-label" src="images/photo-edit-label.png" alt="Select a photo" /><img class="group-edit-image" src="images/group1.jpg" alt="Group" />
-        </div>
-        <div id="group-edit-contact-list-container">
-        	<h2>Contacts</h2>
-        	<ol id="group-edit-contact-list" class="contact-list">
-            	<li>
-                	<div class="contact-item-grid">
-                        <div class="group-edit-contact-item-on-click clickable"></div>
-                        <div class="group-edit-contact-image-container">
-                        	<img class="group-edit-contact-remove-label" src="images/contact-remove-label.png" alt="Remove contact" />
-                            <img class="group-edit-contact-image" src="images/obama.jpg" alt="Barack's image"/>
-                        </div>
-                        <div class="contact-item-grid-label-container">
-                            <div class="contact-item-grid-name">Barack Obama</div>
-                        </div>
-                        <div class="contact-item-grid-phonenumber-container"><div class="contact-item-grid-phonenumber-label label-phonenumber">phone</div><div class="contact-item-grid-phonenumber">(408)555-1234</div></div><div class="contact-item-grid-emailaddress-container"><div class="contact-item-grid-emailaddress-label label-emailaddress">email</div>
-                        <div class="contact-item-grid-emailaddress">obama@sjsu.edu</div>
-                        </div>
-                    </div>
-                </li>
-             </ol>
-             <div "group-edit-button-container">
-             	<button>cancel</button>
-             	<button>save</button>
-             </div>
-        </div>
-    </div>
-
 </div>
 </body>
 </html>
