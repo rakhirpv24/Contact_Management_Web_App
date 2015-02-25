@@ -79,6 +79,7 @@ var contactUtilities = new function() {
 		this.hideContactAdder();
 		this.hideGroupViewer();
 		this.hideGroupEditor();
+		this.hideHistoryList();
 		// Make only the correct tab show it is selected.
 		$(".tab").removeClass("selected");
 		$("#tab-contacts").addClass("selected");
@@ -104,9 +105,26 @@ var contactUtilities = new function() {
 		this.hideContactAdder();
 		this.hideGroupViewer();
 		this.hideGroupEditor();
+		this.hideHistoryList();
 		// Make only the correct tab show it is selected.
 		$(".tab").removeClass("selected");
 		$("#tab-groups").addClass("selected");
+	}
+	/*Show history */
+	this.showHistoryList = function() {
+		jQuery('#history-list').removeClass("history-list-inactive");
+		this.hideContactPanel();
+		this.hideContactViewer();
+		this.hideContactEditor();
+		this.hideContactAdder();
+		this.hideGroupViewer();
+		this.hideGroupEditor();
+		this.hideGroupList();
+		$(".tab").removeClass("selected");
+		$("#tab-history").addClass("selected");
+	}
+	this.hideHistoryList = function() {
+		jQuery('#history-list').addClass("history-list-inactive");
 	}
 	/* Show group list as full grid. */
 	this.showGroupList = function() {
@@ -298,7 +316,15 @@ var contactUtilities = new function() {
 	
 	/* Show the panel for creating a contact. */
 	this.showContactAdder = function() {
-		jQuery('#contact-adder').removeClass("contact-adder-inactive");	
+		jQuery('#contact-adder').removeClass("contact-adder-inactive");
+		contactUtilities.hideContactPanel();
+		contactUtilities.hideGroupList();
+		// Make contact panel full size and hide contact viewer and editor.
+		contactUtilities.hideContactViewer();
+		contactUtilities.hideContactEditor();
+		contactUtilities.hideGroupViewer();
+		contactUtilities.hideGroupEditor();
+		contactUtilities.hideHistoryList();	
 	}
 	this.hideContactAdder = function() {
 		jQuery('#contact-adder').addClass("contact-adder-inactive");	
@@ -522,6 +548,9 @@ window.addEventListener('load', function(e) {
 	});
 	jQuery('#tab-groups').click(function() {
 		contactUtilities.showGroupListOnly();
+	});
+	jQuery('#tab-history').click(function() {
+		contactUtilities.showHistoryList();
 	});
 	
 	// Stuff
