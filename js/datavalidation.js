@@ -38,7 +38,8 @@ function validateEmail()
     var email= document.getElementById("emailid").value;	 
     var re = /\S+@\S+\.\S+/;
     if(re.test(email)) {
-	    window.open("reset_email.html");
+	    //window.open("reset_email.html");
+		window.location.href = 'reset_email.html';
 	}
 	else {
 	    alert("You have entered incorrect email. Please try again!!");
