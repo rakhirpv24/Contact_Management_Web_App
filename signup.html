@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script  src="js/datavalidation.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<link rel="stylesheet" type ="text/css" href="css/button_class.css">
 <title>Sign up</title>
+<script  src="js/datavalidation.js"></script>
 </head>
 
 <body>
@@ -65,9 +65,11 @@
   <label for="license">I agree to the terms and conditions</label>
 of this website.
 </form>
-<p><input name="cancel" type="button" value="Cancel" />
+<p>
+<button id = "big_button" name="cancel" type="button" value="Cancel" onClick="window.location.href ='home.html'">Cancel</button>
+ 
   &nbsp;&nbsp;&nbsp;  
-  <input name="register" type="button" value="Register" onClick="validateData()"/>
+<button id = "big_button" name="register" type="button" value="Register" onClick="validateData()">Register</button>
 </p>
 </body>
 </html>
