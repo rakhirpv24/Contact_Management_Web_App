@@ -2,14 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ 
 <link rel="stylesheet" type ="text/css" href="css/button_class.css">
+ 
+<link rel="stylesheet" type="text/css" href="css/aboutPageStyle.css"> 
 <title>Sign up</title>
 <script  src="js/datavalidation.js"></script>
 </head>
 
 <body>
+<header>
+  <div class="profileLogo" align="left"> 
+    <h1>Contact Management System <img src="images/logo.png" height="95" width="115" align = "left"></img></h1>
+    <p>Manage your contacts without hassle!</p>
+    </div>
+</header>
+<br>
+  <hr>
+<br /><br />
+    <div align="center" style="border:solid 1px" style="">
 <h1>Sign Up</h1>
-<p>&nbsp;</p>
+ 
 <table width="60%" border="0">
   <tr>
     <td><form id="form1" name="form1" method="post" action="">
@@ -65,11 +78,12 @@
   <label for="license">I agree to the terms and conditions</label>
 of this website.
 </form>
+ 
 <p>
 <button id = "big_button" name="cancel" type="button" value="Cancel" onClick="window.location.href ='home.html'">Cancel</button>
- 
   &nbsp;&nbsp;&nbsp;  
 <button id = "big_button" name="register" type="button" value="Register" onClick="validateData()">Register</button>
 </p>
+</div>
 </body>
 </html>
