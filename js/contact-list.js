@@ -3,13 +3,13 @@ Utilities for Contact List.
 */
 
 var users = [
-	{firstName: "Barack", lastName: "Obama", email: "obama@sjsu.edu", cell: "(408)555-1234", photo: "images/obama.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Leonardo", lastName: "", email: "leo@gmail.com", cell: "(408)555-2314", photo: "images/leonardo.jpg", birthdate: "16/1/1915", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Rakhi", lastName: "Verma", email: "rpv@sjsu.edu", cell: "(408)555-1234", photo: "images/no-image.png", birthdate: "1/1/1989", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Tom", lastName: "Cruise", email: "tom@yahoo.com", cell: "(408)505-1234", photo: "images/tom_cruise.jpg", birthdate: "13/1/1976", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Emma", lastName: "Watson", email: "emma@sjsu.edu", cell: "(408)055-1234", photo: "images/emma_watson.jpg", birthdate: "1/1/1985", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Bhavna", lastName: "Gurnani", email: "gurnani@sjsu.edu", cell: "(650)555-1234", photo: "images/no-image.png", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Tom", lastName: "Jerry", email: "jerry@aol.com", cell: "(658)555-1234", photo: "images/tom.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"}];
+	{firstName: "Barack", lastName: "Obama", email: "obama@sjsu.edu", cell: "(408)555-1234", photo: "images/obama.jpg", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Leonardo", lastName: "", email: "leo@gmail.com", cell: "(408)555-2314", photo: "images/leonardo.jpg", birthdate: "16/1/1915", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Rakhi", lastName: "Verma", email: "rpv@sjsu.edu", cell: "(408)555-1234", photo: "images/no-image.png", birthdate: "1/1/1989", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Tom", lastName: "Cruise", email: "tom@yahoo.com", cell: "(408)505-1234", photo: "images/tom_cruise.jpg", birthdate: "13/1/1976", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Emma", lastName: "Watson", email: "emma@sjsu.edu", cell: "(408)055-1234", photo: "images/emma_watson.jpg", birthdate: "1/1/1985", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Bhavna", lastName: "Gurnani", email: "gurnani@sjsu.edu", cell: "(650)555-1234", photo: "images/no-image.png", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Tom", lastName: "Jerry", email: "jerry@aol.com", cell: "(658)555-1234", photo: "images/tom.jpg", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"}];
 var globalContactInfo;
 
 var groups = [
@@ -202,7 +202,7 @@ var contactUtilities = new function() {
 		var deleteButton;
 		var panel;
 		// Make the button for editing the contact.
-		editButton = jQuery('<button id="contact-view-editbutton">edit contact</button>');
+		editButton = jQuery('<button id="contact-view-editbutton">Edit Contact</button>');
 		// When the edit button is clicked, show the edit screen.
 		editButton.click(function(self) {
 			return function() {
@@ -263,10 +263,10 @@ var contactUtilities = new function() {
 		return '<div class="contact-view">'
 				   + '<div class="contact-view-name">' + contactInfo.firstName + ' ' + contactInfo.lastName + '</div>'
 				   + '<div class="contact-view-image-container"><img class="contact-view-image" src="' + contactInfo.photo + '" alt="A Contact" /></div>'
-				   + '<div class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div><img src="images/call-button.png" alt="call" class="contact-action-icon"/></div>'
-					+ '<a href="mailto:'+ contactInfo.email +'"><div class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress">email</div><div class="contact-view-emailaddress">' + contactInfo.email +'</div><img src="images/email-button.png" alt="email"  class="contact-action-icon"/></div></a>'
-					+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
-					+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
+				   + '<div class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber">Phone</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div><img src="images/call-button.png" alt="call" class="contact-action-icon"/></div>'
+					+ '<a href="mailto:'+ contactInfo.email +'"><div class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress">Email</div><div class="contact-view-emailaddress">' + contactInfo.email +'</div><img src="images/email-button.png" alt="email"  class="contact-action-icon"/></div></a>'
+					+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">Home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
+					+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">Work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
 					+ '<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">' + contactInfo.birthdate +'</div></div>'
 					+ '<div id="contact-view-group-container">'
             		+ '<div id="contact-view-group-label">Groups</div>'
@@ -280,7 +280,7 @@ var contactUtilities = new function() {
 	this.makeContactViewGroupItemString = function(info) {
 		return '<div class="contact-view-group-item">'
 						+ '<div class="contact-view-group-item-on-click clickable"></div>'
-						+ '<div class="contact-view-group-item-image-container"><img class="contact-view-group-item-image" src="'+ info.photo +'" alt="'+ info.name +'" /></div>'
+						+ '<div class="contact-view-group-item-image-container"><img width = "30px" height = "30px" class="contact-view-group-item-image" src="'+ info.photo +'" alt="'+ info.name +'" /></div>'
 						+ '<div class="contact-view-group-item-label-container">'
 						+ '<div class="contact-view-group-item-name">'+ info.name + '</div>'
                         + '</div>'
@@ -535,6 +535,7 @@ function initGroupList() {
 	groupListContainer.append(groupList);
 	for (var i = 0; i < groups.length; i++) {
 		var group = groups[i];
+		console.log("Printing for group: " + i);
 		contactUtilities.addGroupToList(groupList, group);
 	}
 }
