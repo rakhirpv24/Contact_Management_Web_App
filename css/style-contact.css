@@ -68,8 +68,10 @@ Contact List
 	top: 50px;
 	bottom: 10px;
 	width: 100%;
-	height: 100vh;
-	min-height: 92vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
+	//min-height: 92vh;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -87,6 +89,11 @@ Contact List
 	overflow-y: scroll;
 	width: 100%;
 	height: 92%;
+}
+
+.contact-panel-thin #contact-list-container{
+	position: relative;
+	top: 15px;
 }
 .contact-list{
 	/* [disabled]margin: 0px; */
@@ -477,22 +484,20 @@ Contact View - view the contact info.
 	left: 240px;
 	background-color:#FC3;
 	width: 75%;
-	height: 100vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 }
 
 #contact-view-delete{
-	position: relative;
-    left: 80%;
-    top: 10%;
+	position:relative;
+    top:2px;
 }
 
 .contact-viewer-inactive {
 	display: none;	
 }
 
-#contact-view-editbutton {
-	float: right;
-}
 .contact-view-image-container {
 	width: 256px;
 	height: 256px;
@@ -624,7 +629,9 @@ Contact editor.
 	left: 240px;
 	background-color:#FC3;
 	width: 75%;
-	height: 100vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 }
 
 #contact-edit-button-container {
@@ -636,6 +643,9 @@ Contact editor.
 	background-color:#C39;
 }
 #contact-edit-cancelbutton {
+	background-color:#F6F; 
+}
+#contact-edit-deletebutton {
 	background-color:#F6F; 
 }
 
@@ -710,7 +720,9 @@ Contact editor.
 	left: 0;
 	background-color:#FC3;
 	width: 100%;
-	height: 100vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 	z-index: 3;  /* puts it higher than the contact list email addresses. */
 }
 #contact-add-name-container {
@@ -785,8 +797,9 @@ Group List
 	top: 50px;
 	bottom: 10px;
 	width: 100%;
-	height: 100vh;
-	min-height: 92vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -796,6 +809,13 @@ Group List
 	width: 100%;
 	height: 92%;
 	margin: 0 auto;  /* centers the container. */
+}
+#group-edit-contact-list-container {
+	position:absolute;
+	top:10px;
+	left:440px;
+	width:200px;
+	background-color:#FF6;
 }
 #group-list, #group-viewer, #group-editor{
 	/*
@@ -808,6 +828,9 @@ Group List
 	list-style-type: none;
 	display: block;
 	margin: 0 auto;  /* centers the container. */
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 }
 #group-list-container {
 	padding: 0px 0px 0px 0px;
@@ -897,7 +920,9 @@ Group View
 	top: 0;
 	left: 20%;
 	width: 80%;
-	height: 100vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 	background-color:#FF9;
 }
 .group-view {
@@ -965,7 +990,9 @@ Group View
 	top: 0;
 	left: 20%;
 	width: 80%;
-	height: 100vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 }
 .group-edit-image-container {
 	width: 400px;
@@ -1047,7 +1074,19 @@ Misc.
 }
 
 .contact-panel-thin #contact-search-form {
-	//left:20px !important;	
+	top:26px;
+	left:25px !important;	
+}
+#contact-search-submit {
+	padding:0;
+	border:thin;
+	position:relative;
+    top:5px;
+}
+.search-icon {
+	width: 20px;
+	height: 20px;
+	cursor:pointer;
 }
 
 .contact-action-icon{
@@ -1062,9 +1101,64 @@ Misc.
 	cursor: none;
 }
 
+#contact-panel-addbutton {
+	padding:0px;
+	border:none;
+	background-color:rgba(255,255,255,0.5);
+	margin:1px;
+}
+.contact-action-icon2{
+	width: 35px;
+	height: 35px;
+	cursor:pointer;
+	//margin-bottom:-5px;
+}
+.contact-panel-thin .contact-action-icon2{
+	width: 25px;
+	height: 25px;
+}
+
+.contact-panel-add-label {
+	padding:0;
+	margin:0;
+	display:inline;
+	//vertical-align:middle;
+}
+.contact-panel-thin .contact-panel-add-label {
+	padding:0;
+	margin:0;
+	display:none !important;
+}
+
 .contact-view-phonenumber-container .contact-action-icon,
 .contact-view-emailaddress-container .contact-action-icon {
 	cursor:pointer;
 	position:absolute;
 	left:220px;
+}
+
+.viewer-action-icon {
+	width: 15px;
+	height: 15px;
+	cursor:pointer;
+}
+
+.contact-view-actions-container {
+	float:right;
+}
+
+
+#group-edit-button-container {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;	
+}
+#group-edit-savebutton {
+	background-color:#C39;
+}
+#group-edit-cancelbutton {
+	background-color:#F6F; 
+}
+#group-edit-deletebutton {
+	background-color:#F6F; 
 }

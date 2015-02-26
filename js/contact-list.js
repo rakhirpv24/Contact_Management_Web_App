@@ -193,7 +193,7 @@ var contactUtilities = new function() {
 		
 		
 		// Make the button for deleting the contact.
-		deleteButton = jQuery('<button id="contact-view-delete" >Delete</button>');
+		deleteButton = jQuery('<button id="contact-view-delete" title="Delete contact"><img class="contact-view-image viewer-action-icon" src="images/delete-icon.png" alt="Delete Contact"/></button>');
 		// When the delete button is clicked, delete the contact.
 		deleteButton.click(function(self) {
 			return function() {
@@ -226,8 +226,10 @@ var contactUtilities = new function() {
 		panel = jQuery(this.makeContactDisplayPanelString(contactInfo));
 		// Put everything into a container.
 		container = jQuery('<div></div>');
-		container.append(deleteButton);
-		container.append(editButton);
+		actionsContainer = jQuery('<div class="contact-view-actions-container"></div>');
+		actionsContainer.append(editButton);
+		actionsContainer.append(deleteButton);
+		container.append(actionsContainer);
 		container.append(panel);
 		
 		return container;
