@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>About Page template By Adobe Dreamweaver CC</title>
 <link href="css/aboutPageStyle.css" rel="stylesheet" type="text/css">
-
+<link rel="stylesheet" type ="text/css" href="css/button_class.css">
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
 <script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js" type="text/javascript"></script>
 <style type="text/css">
@@ -59,13 +59,13 @@
             <input type="checkbox" name="remember_me" id="remember_me">Remember me on this computer
           </label>
         </p>
-        <p class="submit">
-        <input type="submit" name="commit" value="Login" align="right" onClick="validateLogin()">
-        <input type="submit" name="rollback" value="Cancel" align="right" onClick="window.location.href='home.html'">
+        <p class="submit">		
+		<button id="big_button" type="button" onClick="window.location.href='home.html'">Cancel</button>
+		<button id="big_button" type="button" onClick="validateLogin()">Login</button>		
    </p>
      
       <p>Forgot your password? <a href="forgotpassword.html">Click here to reset it</a>.</p>
-      <p>Not a member yet? <a href="home.html">Click here</a>.</p>  </form>
+      <p>Not a member yet? <a href="signup.html">Click here</a>.</p>  </form>
 </div>
 
 
@@ -86,8 +86,8 @@
 function validateLogin(){
 	var username=document.getElementById("login").value;
 	var password = document.getElementById("password").value;
-	if(username=="admin" && password == "admin"){
-		window.open("contact-list.html");
+	if(username=="admin" && password == "admin"){		 
+		window.location.href = "contact-list.html";
 	}
 	else{
 		alert("You have entered incorrect username or password. Please try again!!");	
