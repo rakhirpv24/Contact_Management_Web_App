@@ -3,11 +3,22 @@
 <head>
 <script  src="js/datavalidation.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link rel="stylesheet" type="text/css" href="css/aboutPageStyle.css">
 
 <title>Sign up</title>
 </head>
 
 <body>
+<header>
+  <div class="profileLogo" align="left"> 
+    <h1>Contact Management System <img src="images/logo.png" height="95" width="115" align = "left"></img></h1>
+    <p>Manage your contacts without hassle!</p>
+    </div>
+</header>
+<br>
+  <hr>
+<br /><br /><br /><br />
+           <div align="center" style="border:solid 1px" style="">
 <h1>Sign Up</h1>
 <p>&nbsp;</p>
 <table width="60%" border="0">
@@ -65,9 +76,10 @@
   <label for="license">I agree to the terms and conditions</label>
 of this website.
 </form>
-<p><input name="cancel" type="button" value="Cancel" />
+<p><input name="cancel" type="button" value="Cancel" onclick=location.href="home.html" />
   &nbsp;&nbsp;&nbsp;  
   <input name="register" type="button" value="Register" onClick="validateData()"/>
 </p>
+</div>
 </body>
 </html>
