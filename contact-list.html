@@ -15,16 +15,14 @@
 <body>
 	<!-- Header content -->
 <header>
-	<div align="right" style="float:right;">
-    <button type="button" onClick="window.location.href = 'home.html'">Logout</button>
-    </div>
-  <div class="profileLogo" align="left"> 
-    <!-- Profile logo. Add a img tag in place of <span>. -->
-    <h1>Contact Manager <img src="images/logo.png" height="95" width="115" align = "left"></img></h1>
-    <p>Manage your contacts without hassle</p>
-    </div>
-
-</header>
+    <p style="text-align:left;"> 
+<a href = "contact-list.html"> <img src="images/logo.png" height="85" width="105" align = "left"></img></a> </p>
+  <p><h1> Contact Management System </h1><h3><span style="float:left;">  Manage your contacts without hassle! </span> 
+<span style="float:right;"> Welcome admin!! <input type="submit" name="Signout" value="Signout" onClick="window.location.href='Login.html'"></input> </span> 
+</h3></p>
+  </header>
+  <br />
+  <br />
 	<!-- The tabs. -->
 	<hr />
   <div  id="nav" align="center">
@@ -38,12 +36,11 @@
 	<div style="position:relative; width:100%; height:100%;">
     	<!-- Contact List -->
         <div id="contact-panel">
-            <button id="contact-panel-addbutton" title="add new contact" class="clickable"><img class="contact-action-icon2" src="images/add-contact-icon.png" alt="Add new Contact"/><p class="contact-panel-add-label">new contact</p></button>
+            <button id="contact-panel-addbutton" title="add new contact" class="clickable"><img src="images/dynamicImage1.png" alt="Add new Contact" width = "50px" height="40px"/></button>
             <form action="#" onsubmit="return false;" id="contact-search-form">
                 <input type="text" id="contact-search-input"/>
                 <button id="contact-search-submit" title="search"><img class="search-icon" src="images/search-icon.png" alt="Search"/></button>
             </form>
-            <span id="contact-panel-label">Contacts</span>
     
             <div id="contact-list-container"></div>
         </div>
@@ -136,44 +133,83 @@
   });
   </script>
   <!-- Adding a new contact. -->
-  <div id="contact-adder" class="contact-adder-inactive"> 
-  	<div class="contact-add-image-container clickable" title="Click to choose a photo"><img class="contact-add-image" src="images/no-image.png" alt="A Contact" /></div>
-    <div>
-      <p>
+  <div id="contact-adder" class="contact-adder-inactive" > 
+  	<div class="contact-add-image-container clickable" title="Click to choose a photo" ><img width="186px" height="166px" class="contact-add-image" src="images/no-image.png" alt="A Contact" /></div>
+    <div align="center">
+    <table   >
+    
+    <tr>
+    	<td align="right">
         <label><strong>First Name: </strong></label>
+        </td>
+        <td align="left">
         <input type="text" id = "addcontact-firstname" name="addcontact-firstname" value="" placeholder="First Name" align="right" autofocus>
-      </p>
-      <p>
+        </td>
+     </tr>
+     
+     <tr>
+    	<td align="right">
         <label><strong>Last Name: </strong></label>
+        </td>
+        <td align="left">
         <input type="text" id = "addcontact-lastname" name="addcontact-lastname" value="" placeholder="Last Name" align="right">
-      </p>
-      <p>
+        </td>
+     </tr>
+     
+      <tr>
+    	<td align="right">
         <label><strong>Email ID: </strong></label>
+        </td>
+        <td align="left">
         <input type="text" id = "addcontact-email" name="addcontact-email" value="" placeholder="Email ID" align="right">
-      </p>
-      <p>
+      </td>
+     </tr>
+     
+     <tr>
+    	<td align="right">
         <label><strong>Phone Number: </strong></label>
+        </td>
+        
+        <td align="left">
         <input type="text" id = "addcontact-phone" name="addcontact-phone" value="" placeholder="Phone Number" align="right">
-      </p>
-      <p>
+        </td>
+        </tr>
+     
+     <tr>
+    	<td align="right">
         <label><strong>Date of Birth: </strong></label>
+        </td>
+        
+        <td align="left">
         <input type="text" id = "addcontact-dob" name="addcontact-dob" value="" placeholder="Date Of Birth" align="right">
-      </p>
-      <p>
+       </td>
+        </tr>
+        <tr>
+        <td align="right">
         <label><strong>Home Address: </strong></label>
+        </td>
+        
+        <td align="left">
         <input type="text" id = "addcontact-homeaddress" name="addcontact-homeaddress" value="" placeholder="Residential Address" align="right">
-      </p>
-      <p>
+        </td>
+        </tr>
+        <tr>
+        <td align="right">
         <label><strong>Office Address: </strong></label>
+        </td>
+        <td align="left">
         <input type="text" id = "addcontact-officeaddress" name="officeaddress" value="" placeholder="Office Address" align="right">
-      </p>
-    </div>
-    <div>
-      <p class="submit">
+        </td>
+        </tr>
+     <tr> <td></td>
+      <td></td></tr>
+   <tr>
+        <td align="right">
         <input type="submit"  value="Save" align="right" id = "contact-add-savebutton">
+        </td>
+        <td align="left">
         <input type="submit"  value="Cancel" align="right" id = "contact-add-cancelbutton">
-      </p>
-    </div>
+        </td> </tr>    </table></div></div>
   </div>
   
   
