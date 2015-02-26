@@ -79,12 +79,17 @@ var contactUtilities = new function() {
 		this.hideContactAdder();
 		this.hideGroupViewer();
 		this.hideGroupEditor();
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-contacts").addClass("selected");
 	}
 	
 	/* Show contact list. */
 	this.showContactPanelFull = function() {
 		jQuery('#contact-panel').removeClass("contact-panel-inactive");
-		
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-contacts").addClass("selected");
 	}
 	/* Hide contact list. */
 	this.hideContactPanel = function() {
@@ -99,21 +104,33 @@ var contactUtilities = new function() {
 		this.hideContactAdder();
 		this.hideGroupViewer();
 		this.hideGroupEditor();
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
 	}
 	/* Show group list as full grid. */
 	this.showGroupList = function() {
 		jQuery('#group-list').removeClass("group-list-inactive");
 		jQuery('#group-list').removeClass("group-list-thin");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
 	}
 	this.showGroupListThin = function() {
 		jQuery('#group-list').addClass("group-list-thin");
 		jQuery('#group-list').removeClass("group-list-inactive");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
 	};
 	
 	this.showGroupViewer = function() {
 		this.hideGroupEditor();
 		this.showGroupListThin();
 		jQuery('#group-viewer').removeClass("group-viewer-inactive");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
 	}
 	this.hideGroupViewer = function() {
 		jQuery('#group-viewer').addClass("group-viewer-inactive");
@@ -123,6 +140,9 @@ var contactUtilities = new function() {
 		this.hideGroupViewer();
 		this.showGroupListThin();
 		jQuery('#group-editor').removeClass("group-editor-inactive");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
 	}
 	this.hideGroupEditor = function() {
 		jQuery('#group-editor').addClass("group-editor-inactive");
@@ -145,6 +165,9 @@ var contactUtilities = new function() {
 		jQuery('#contact-viewer').append(this.makeContactDisplay(contactInfo));
 		// Make contact panel thinner.
 		jQuery('#contact-panel').addClass("contact-panel-thin");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-contacts").addClass("selected");
 	};
 	
 	this.hideContactViewer = function() {
@@ -219,8 +242,8 @@ var contactUtilities = new function() {
 		return '<div class="contact-view">'
 				   + '<div class="contact-view-name">' + contactInfo.firstName + ' ' + contactInfo.lastName + '</div>'
 				   + '<div class="contact-view-image-container"><img class="contact-view-image" src="' + contactInfo.photo + '" alt="A Contact" /></div>'
-				   + '<button type="button" class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber"><img src="images/call.png" alt="call" /></div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div></button>'
-					+ '<a href="mailto:'+ contactInfo.email +'"><button type="button" class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress"><img src="images/email.png" alt="email" /></div><div class="contact-view-emailaddress">' + contactInfo.email +'</div></button></a>'
+				   + '<div class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div><img src="images/call-button.png" alt="call" class="contact-action-icon"/></div>'
+					+ '<a href="mailto:'+ contactInfo.email +'"><div class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress">email</div><div class="contact-view-emailaddress">' + contactInfo.email +'</div><img src="images/email-button.png" alt="email"  class="contact-action-icon"/></div></a>'
 					+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
 					+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
 					+ '<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">' + contactInfo.birthdate +'</div></div>'
@@ -340,8 +363,8 @@ var contactUtilities = new function() {
 						+ '<div class="contact-item-grid-label-container">'
 						+ '<div class="contact-item-grid-name">'+ contactInfo.firstName + ' ' + contactInfo.lastName +'</div>'
                         + '</div>'
-                        + '<div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call '+ contactInfo.firstName +'"><img src="images/call.png" alt="call" /></button><div class="contact-item-grid-phonenumber">'+ contactInfo.cell +'</div></div>'
-                        + '<div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email '+ contactInfo.firstName +'"><img src="images/email.png" alt="email" /></button><div class="contact-item-grid-emailaddress"><a href="mailto:'+ contactInfo.email +'">'+ contactInfo.email +'</a></div></div>'
+                        + '<div class="contact-item-grid-phonenumber-container"><div class="contact-item-grid-phonenumber-label label-phonenumber" title="Call '+ contactInfo.firstName +'"><img src="images/call.png" alt="call" class="contact-action-icon"/></div><div class="contact-item-grid-phonenumber">'+ contactInfo.cell +'</div></div>'
+                        + '<div class="contact-item-grid-emailaddress-container"><div class="contact-item-grid-emailaddress-label label-emailaddress" title="Email '+ contactInfo.firstName +'"><img src="images/email.png" alt="email" class="contact-action-icon"/></div><div class="contact-item-grid-emailaddress"><a href="mailto:'+ contactInfo.email +'">'+ contactInfo.email +'</a></div></div>'
                         +'</div>';
 	}
 	

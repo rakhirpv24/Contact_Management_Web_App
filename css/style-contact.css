@@ -15,6 +15,9 @@ html,body {
     height:100%;
 }
 
+hr {
+	visibility:hidden;
+}
 /* 
 
 Universal styles for labels, e.g. "email", "phone number". 
@@ -27,7 +30,23 @@ And other universal styles.
 #tab-contacts, #tab-groups, #tab-history, #tab-myprofile{
 	display: inline;
 }
- 
+.tab {
+	background-color:#C03;	
+	border: none;
+	padding: 2px 4px 2px 4px;
+	margin-bottom: -18px;
+	font-family: "Arial", Times, sans-serif;
+	font-size: 12pt;
+	color:#FFF;
+	cursor:pointer;
+}
+
+.tab.selected {
+	background-color:#FF2DFF;
+}
+.tab:hover, .tab.hover {
+	background-color:#F60;
+}
 /* NOTE: You need to specifiy a width for the elements using this class.*/
 .label-emailaddress, .label-phonenumber, .label-homeaddress, .label-workaddress, .label-birthdate {
 	text-align:right;
@@ -172,7 +191,7 @@ Contact items in thin list mode.
 */
 
 .contact-panel-thin {
-	width: 20% !important;
+	width: 240px !important;
 	margin: 0 !important;
 }
 .contact-panel-thin #contact-panel-addbutton {
@@ -227,6 +246,7 @@ Contact items in thin list mode.
 	display: inline-block;
 	z-index: 0;    /* makes email address NOT clickable. */
 	/* z-index: 2; */
+	width:100%;
 }
 .contact-panel-thin .contact-item-grid-phonenumber {
 	display: inline-block;
@@ -241,7 +261,7 @@ Contact items in thin list mode.
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
 	color: #666;
-	width: 30px;
+	width: 20px;
 	overflow:visible;
 }
 .contact-panel-thin .contact-item-grid-view-on-click {
@@ -431,7 +451,7 @@ Contact items in grid mode.
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
 	color: #666;
-	width: 40px;
+	width: 20px;
 	overflow:visible;
 }
 .contact-item-grid-view-on-click {
@@ -454,9 +474,9 @@ Contact View - view the contact info.
 #contact-viewer {
 	position: absolute;
 	top: 0;
-	left: 20%;
+	left: 240px;
 	background-color:#FC3;
-	width: 80%;
+	width: 75%;
 	height: 100vh;
 }
 
@@ -547,6 +567,7 @@ Contact View - view the contact info.
 	overflow:visible;
 }
 
+
 #contact-view-group-container {
 	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
 	top: 70vh;
@@ -600,9 +621,9 @@ Contact editor.
 #contact-editor {
 	position: absolute;
 	top: 0;
-	left: 20%;
+	left: 240px;
 	background-color:#FC3;
-	width: 80%;
+	width: 75%;
 	height: 100vh;
 }
 
@@ -758,6 +779,16 @@ Group List
 */
 #group-panel-label {
 	font: 25px arial, sans-serif;
+}
+#group-list {
+	background-color:#FF2DFF;
+	top: 50px;
+	bottom: 10px;
+	width: 100%;
+	height: 100vh;
+	min-height: 92vh;
+	margin: 0 auto;
+	overflow: hidden;
 }
 #group-list-container, #group-view-contact-list-container, #group-edit-contact-list-container {
 	padding: 0px 0px 0px 0px;
@@ -1004,4 +1035,36 @@ Group View
 /* Groups Inactive */
 .group-list-inactive, .group-viewer-inactive, .group-editor-inactive {
 	display: none !important;	
+}
+
+
+/*
+Misc.
+*/
+#contact-search-form {
+	position:absolute;
+	left:45%;	
+}
+
+.contact-panel-thin #contact-search-form {
+	//left:20px !important;	
+}
+
+.contact-action-icon{
+	width: 20px;
+	height: 20px;
+	cursor:pointer;
+	margin-bottom:-5px;
+}
+.contact-panel-thin .contact-action-icon{
+	width: 15px;
+	height: 15px;
+	cursor: none;
+}
+
+.contact-view-phonenumber-container .contact-action-icon,
+.contact-view-emailaddress-container .contact-action-icon {
+	cursor:pointer;
+	position:absolute;
+	left:220px;
 }
