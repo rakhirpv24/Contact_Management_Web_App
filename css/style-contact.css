@@ -85,10 +85,9 @@ Contact List
 	top: 50px;
 	bottom: 10px;
 	width: 100%;
-	height: -moz-calc(100% - 170px);
-    height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);
-	//min-height: 92vh;
+	height: -moz-calc(100vh - 0px);
+    height: -webkit-calc(100vh - 0px);
+    height: calc(100vh - 0px);
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -105,12 +104,12 @@ Contact List
 	padding: 0px 0px 0px 0px;
 	overflow-y: scroll;
 	width: 100%;
-	height: 87%;
+	height: 57%;
 }
 
 .contact-panel-thin #contact-list-container{
 	position: relative;
-	top: 25px;
+	top: 0px;
 }
 .contact-list{
 	/* [disabled]margin: 0px; */
@@ -501,9 +500,10 @@ Contact View - view the contact info.
 	left: 240px;
 	background-color:#FC3;
 	width: 75%;
-	height: -moz-calc(100% - 170px);
-    height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);
+	height: -moz-calc(100% - 200px);
+    height: -webkit-calc(100% - 200px);
+    height: calc(100% - 200px);
+	overflow-y:scroll;
 }
 
 #contact-view-delete{
@@ -581,7 +581,7 @@ Contact View - view the contact info.
 }
 
 .contact-view-phonenumber-label, .contact-view-emailaddress-label, .contact-view-birthdate-label, .contact-view-homeaddress-label, .contact-view-workaddress-label {
-	padding-right: 5px;
+	padding-right: 8px;
 	padding-left: 0;
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
@@ -650,9 +650,9 @@ Contact editor.
 	left: 240px;
 	background-color:#FC3;
 	width: 75%;
-	height: -moz-calc(100% - 170px);
-    height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);
+	height: -moz-calc(100% - 50px);
+    height: -webkit-calc(100% - 50px);
+    height: calc(100% - 50px);
 }
 
 #contact-editor .contact-view-phonenumber-container {
@@ -777,9 +777,9 @@ Contact editor.
 	left: 0;
 	background-color:#FC3;
 	width: 100%;
-	height: -moz-calc(100% - 170px);
-    height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);
+	height: -moz-calc(100% - 100px);
+    height: -webkit-calc(100% - 100px);
+    height: calc(100% - 100px);
 	z-index: 3;  /* puts it higher than the contact list email addresses. */
 }
 #contact-add-name-container {
@@ -797,6 +797,10 @@ Contact editor.
 	position:absolute;
 	left: 180px;
 	top: 4px;
+}
+.contact-add-image {
+	width: 150px;
+	height: 150px;
 }
 #contact-add-button-container {
 	position: absolute;
@@ -853,9 +857,9 @@ Group List
 	top: 50px;
 	bottom: 10px;
 	width: 100%;
-	/*height: -moz-calc(100% - 170px);
-    height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);*/
+	/*height: -moz-calc(100% - 100px);
+    height: -webkit-calc(100% - 100px);
+    height: calc(100% - 100px);*/
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -884,15 +888,17 @@ Group List
 	list-style-type: none;
 	display: block;
 	margin: 0 auto;  /* centers the container. */
-	/*height: -moz-calc(100% - 170px);
-    height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);*/
+	/*height: -moz-calc(100% - 100px);
+    height: -webkit-calc(100% - 100px);
+    height: calc(100% - 100px);*/
 }
 #group-list-container {
 	padding: 0px 0px 0px 0px;
 	overflow-y: scroll;
 	width: 100%;
 	height: 92%;
+	top: 30px;
+	position: relative
 }
 .group-list{
 	/* [disabled]margin: 0px; */
@@ -976,9 +982,9 @@ Group View
 	top: 0;
 	left: 20%;
 	width: 80%;
-	height: -moz-calc(100% - 170px);
-    height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);
+	height: -moz-calc(100vh - 200px);
+    height: -webkit-calc(100vh - 200px);
+    height: calc(100vh - 200px);
 	background-color:#FF9;
 }
 .group-view {
@@ -1053,14 +1059,15 @@ Group View
 	top: 0;
 	left: 20%;
 	width: 80%;
-	height: -moz-calc(100% - 170px);
-    height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);
+	height: -moz-calc(100vh - 50px);
+    height: -webkit-calc(100vh - 50px);
+    height: calc(100vh - 50px);
 }
 .group-edit-image-container {
 	width: 400px;
 	height: 256px;
 	overflow:hidden;
+	margin:5px;
 }
 .group-edit-image {
 	height: 256px;
@@ -1140,8 +1147,8 @@ Misc.
 }
 
 .contact-panel-thin #contact-search-form {
-	top:26px;
-	left:25px !important;	
+	top:2px;
+	left:115px !important;	
 }
 #contact-search-submit {
 	padding:0;
