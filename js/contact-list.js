@@ -4,20 +4,18 @@ Utilities for Contact List.
 
 var users = [
 	{firstName: "Barack", lastName: "Obama", email: "obama@sjsu.edu", cell: "(408)555-1234", photo: "images/obama.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Barack2", lastName: "Obama2", email: "obama2@sjsu.edu", cell: "(408)555-1234", photo: "images/obama2.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron", lastName: "Mak", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron2", lastName: "Mak2", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron3", lastName: "Mak3", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron4", lastName: "Mak4", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron5", lastName: "Mak5", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron654321", lastName: "Mak654321", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"
-	}];
+	{firstName: "Leonardo", lastName: "", email: "leo@gmail.com", cell: "(408)555-2314", photo: "images/leonardo.jpg", birthdate: "16/1/1915", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
+	{firstName: "Rakhi", lastName: "Verma", email: "rpv@sjsu.edu", cell: "(408)555-1234", photo: "images/no-image.png", birthdate: "1/1/1989", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
+	{firstName: "Tom", lastName: "Cruise", email: "tom@yahoo.com", cell: "(408)505-1234", photo: "images/tom_cruise.jpg", birthdate: "13/1/1976", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
+	{firstName: "Emma", lastName: "Watson", email: "emma@sjsu.edu", cell: "(408)055-1234", photo: "images/emma_watson.jpg", birthdate: "1/1/1985", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
+	{firstName: "Bhavna", lastName: "Gurnani", email: "gurnani@sjsu.edu", cell: "(650)555-1234", photo: "images/no-image.png", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
+	{firstName: "Tom", lastName: "Jerry", email: "jerry@aol.com", cell: "(658)555-1234", photo: "images/tom.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"}];
 var globalContactInfo;
 
 var groups = [
-	{name: "Friends", photo: "images/group1.png"},
-	{name: "Coworkers", photo: "images/group2.png"},
-	{name: "Important", photo: "images/group3.png"}
+	{name: "Friends", photo: "images/friends.png"},
+	{name: "Coworkers", photo: "images/coworkers.png"},
+	{name: "Family", photo: "images/family.png"}
 ];
 
 // Default contact info.
@@ -57,16 +55,19 @@ var contactUtilities = new function() {
 	this.refreshContactList = function(contacts) {
 		var contactListContainer = jQuery('#contact-list-container');
 		var contactList = jQuery('<ol class="contact-list"></ol>');
+		console.log("Contacts length in refresh= " + contacts.length);
 		contactListContainer.empty();
 		contactListContainer.append(contactList);
 		for (var i = 0; i < contacts.length; i++) {
 			var contact = contacts[i];
 			this.addContactToList(contactList, contact);
+			console.log("Printing for " + i);
 			// Highlight the contact if it is the currently selected one.
 			if(contact.firstName == globalContactInfo.firstName && contact.lastName == globalContactInfo.lastName) {
 				this.highlightContact(contact);
 			}
 		}
+		contactUtilities.showContactPanelFullOnly();
 	}
 	
 	/* Show contact panel full, and other panels are deactivated. */
@@ -77,12 +78,20 @@ var contactUtilities = new function() {
 		this.hideContactViewer();
 		this.hideContactEditor();
 		this.hideContactAdder();
+		this.hideGroupViewer();
+		this.hideGroupEditor();
+		this.hideHistoryList();
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-contacts").addClass("selected");
 	}
 	
 	/* Show contact list. */
 	this.showContactPanelFull = function() {
 		jQuery('#contact-panel').removeClass("contact-panel-inactive");
-		
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-contacts").addClass("selected");
 	}
 	/* Hide contact list. */
 	this.hideContactPanel = function() {
@@ -95,11 +104,69 @@ var contactUtilities = new function() {
 		this.hideContactViewer();
 		this.hideContactEditor();
 		this.hideContactAdder();
+		this.hideGroupViewer();
+		this.hideGroupEditor();
+		this.hideHistoryList();
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
 	}
-	/* Show group list. */
+	/*Show history */
+	this.showHistoryList = function() {
+		jQuery('#history-list').removeClass("history-list-inactive");
+		this.hideContactPanel();
+		this.hideContactViewer();
+		this.hideContactEditor();
+		this.hideContactAdder();
+		this.hideGroupViewer();
+		this.hideGroupEditor();
+		this.hideGroupList();
+		$(".tab").removeClass("selected");
+		$("#tab-history").addClass("selected");
+	}
+	this.hideHistoryList = function() {
+		jQuery('#history-list').addClass("history-list-inactive");
+	}
+	/* Show group list as full grid. */
 	this.showGroupList = function() {
 		jQuery('#group-list').removeClass("group-list-inactive");
+		jQuery('#group-list').removeClass("group-list-thin");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
 	}
+	this.showGroupListThin = function() {
+		jQuery('#group-list').addClass("group-list-thin");
+		jQuery('#group-list').removeClass("group-list-inactive");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
+	};
+	
+	this.showGroupViewer = function() {
+		this.hideGroupEditor();
+		this.showGroupListThin();
+		jQuery('#group-viewer').removeClass("group-viewer-inactive");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
+	}
+	this.hideGroupViewer = function() {
+		jQuery('#group-viewer').addClass("group-viewer-inactive");
+	}
+	
+	this.showGroupEditor = function() {
+		this.hideGroupViewer();
+		this.showGroupListThin();
+		jQuery('#group-editor').removeClass("group-editor-inactive");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-groups").addClass("selected");
+	}
+	this.hideGroupEditor = function() {
+		jQuery('#group-editor').addClass("group-editor-inactive");
+	}
+	
 	/* HIde group list. */
 	this.hideGroupList = function() {
 		jQuery('#group-list').addClass("group-list-inactive");
@@ -117,6 +184,9 @@ var contactUtilities = new function() {
 		jQuery('#contact-viewer').append(this.makeContactDisplay(contactInfo));
 		// Make contact panel thinner.
 		jQuery('#contact-panel').addClass("contact-panel-thin");
+		// Make only the correct tab show it is selected.
+		$(".tab").removeClass("selected");
+		$("#tab-contacts").addClass("selected");
 	};
 	
 	this.hideContactViewer = function() {
@@ -142,7 +212,7 @@ var contactUtilities = new function() {
 		
 		
 		// Make the button for deleting the contact.
-		deleteButton = jQuery('<button id="contact-view-delete" >Delete</button>');
+		deleteButton = jQuery('<button id="contact-view-delete" title="Delete contact"><img class="contact-view-image viewer-action-icon" src="images/delete-icon.png" alt="Delete Contact"/></button>');
 		// When the delete button is clicked, delete the contact.
 		deleteButton.click(function(self) {
 			return function() {
@@ -175,8 +245,10 @@ var contactUtilities = new function() {
 		panel = jQuery(this.makeContactDisplayPanelString(contactInfo));
 		// Put everything into a container.
 		container = jQuery('<div></div>');
-		container.append(deleteButton);
-		container.append(editButton);
+		actionsContainer = jQuery('<div class="contact-view-actions-container"></div>');
+		actionsContainer.append(editButton);
+		actionsContainer.append(deleteButton);
+		container.append(actionsContainer);
 		container.append(panel);
 		
 		return container;
@@ -191,8 +263,8 @@ var contactUtilities = new function() {
 		return '<div class="contact-view">'
 				   + '<div class="contact-view-name">' + contactInfo.firstName + ' ' + contactInfo.lastName + '</div>'
 				   + '<div class="contact-view-image-container"><img class="contact-view-image" src="' + contactInfo.photo + '" alt="A Contact" /></div>'
-				   + '<button type="button" class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber"><img src="images/call.png" alt="call" /></div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div></button>'
-					+ '<a href="mailto:'+ contactInfo.email +'"><button type="button" class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress"><img src="images/email.png" alt="email" /></div><div class="contact-view-emailaddress">' + contactInfo.email +'</div></button></a>'
+				   + '<div class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div><img src="images/call-button.png" alt="call" class="contact-action-icon"/></div>'
+					+ '<a href="mailto:'+ contactInfo.email +'"><div class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress">email</div><div class="contact-view-emailaddress">' + contactInfo.email +'</div><img src="images/email-button.png" alt="email"  class="contact-action-icon"/></div></a>'
 					+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
 					+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
 					+ '<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">' + contactInfo.birthdate +'</div></div>'
@@ -245,7 +317,15 @@ var contactUtilities = new function() {
 	
 	/* Show the panel for creating a contact. */
 	this.showContactAdder = function() {
-		jQuery('#contact-adder').removeClass("contact-adder-inactive");	
+		jQuery('#contact-adder').removeClass("contact-adder-inactive");
+		contactUtilities.hideContactPanel();
+		contactUtilities.hideGroupList();
+		// Make contact panel full size and hide contact viewer and editor.
+		contactUtilities.hideContactViewer();
+		contactUtilities.hideContactEditor();
+		contactUtilities.hideGroupViewer();
+		contactUtilities.hideGroupEditor();
+		contactUtilities.hideHistoryList();	
 	}
 	this.hideContactAdder = function() {
 		jQuery('#contact-adder').addClass("contact-adder-inactive");	
@@ -312,8 +392,8 @@ var contactUtilities = new function() {
 						+ '<div class="contact-item-grid-label-container">'
 						+ '<div class="contact-item-grid-name">'+ contactInfo.firstName + ' ' + contactInfo.lastName +'</div>'
                         + '</div>'
-                        + '<div class="contact-item-grid-phonenumber-container"><button type="button" class="contact-item-grid-phonenumber-label label-phonenumber" title="Call '+ contactInfo.firstName +'"><img src="images/call.png" alt="call" /></button><div class="contact-item-grid-phonenumber">'+ contactInfo.cell +'</div></div>'
-                        + '<div class="contact-item-grid-emailaddress-container"><button class="contact-item-grid-emailaddress-label label-emailaddress" title="Email '+ contactInfo.firstName +'"><img src="images/email.png" alt="email" /></button><div class="contact-item-grid-emailaddress"><a href="mailto:'+ contactInfo.email +'">'+ contactInfo.email +'</a></div></div>'
+                        + '<div class="contact-item-grid-phonenumber-container"><div class="contact-item-grid-phonenumber-label label-phonenumber" title="Call '+ contactInfo.firstName +'"><img src="images/call.png" alt="call" class="contact-action-icon"/></div><div class="contact-item-grid-phonenumber">'+ contactInfo.cell +'</div></div>'
+                        + '<div class="contact-item-grid-emailaddress-container"><div class="contact-item-grid-emailaddress-label label-emailaddress" title="Email '+ contactInfo.firstName +'"><img src="images/email.png" alt="email" class="contact-action-icon"/></div><div class="contact-item-grid-emailaddress"><a href="mailto:'+ contactInfo.email +'">'+ contactInfo.email +'</a></div></div>'
                         +'</div>';
 	}
 	
@@ -365,8 +445,9 @@ var contactUtilities = new function() {
 	
 	// Returns the HTML string for the group item, with classes for the grid format.
 	this.makeGroupListGridItemString = function(info) {
+		// FIXME: This uses some incorrect classes. Fix them if it is a problem.
 		return '<div class="contact-item-grid">'
-						+ '<div class="contact-item-grid-view-on-click"></div>'
+						+ '<div class="group-item-on-click"></div>'
 						+ '<div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="'+ info.photo +'" alt="'+ info.name +'\'s image" /></div>'
 						+ '<div class="contact-item-grid-label-container">'
 						+ '<div class="contact-item-grid-name">'+ info.name + '</div>'
@@ -469,6 +550,10 @@ window.addEventListener('load', function(e) {
 	jQuery('#tab-groups').click(function() {
 		contactUtilities.showGroupListOnly();
 	});
+	jQuery('#tab-history').click(function() {
+		contactUtilities.showHistoryList();
+	});
+	
 	// Stuff
 	jQuery('#contact-panel-addbutton').click(function(){
 		contactUtilities.showContactAdder();
@@ -531,6 +616,8 @@ window.addEventListener('load', function(e) {
 		
 		var contactList = jQuery(document.getElementById("contact-list-id"));
 		contactUtilities.addContactToList(contactList, users[users.length-1]);
+		globalContactInfo = users[users.length-1];
+		console.log("Users length in save= " + users.length);
 
 		contactUtilities.hideContactAdder();
 		// Refresh cotnact list.
@@ -539,8 +626,16 @@ window.addEventListener('load', function(e) {
 	jQuery('#contact-add-cancelbutton').click(function(){
 		contactUtilities.hideContactAdder();
 		// Refresh Contact List
-		contactUtilities.refreshContactList(users);
+		contactUtilities.showContactPanelFullOnly();
 		
+	});
+	
+	// Group click events.
+	$('.group-item-on-click').click(function(){
+		contactUtilities.showGroupViewer();
+	});
+	$('#group-view-editbutton').click(function(){
+		contactUtilities.showGroupEditor();
 	});
 	
 });  // End of add event listener

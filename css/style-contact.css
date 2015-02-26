@@ -15,6 +15,9 @@ html,body {
     height:100%;
 }
 
+hr {
+	visibility:hidden;
+}
 /* 
 
 Universal styles for labels, e.g. "email", "phone number". 
@@ -27,7 +30,28 @@ And other universal styles.
 #tab-contacts, #tab-groups, #tab-history, #tab-myprofile{
 	display: inline;
 }
- 
+.tab {
+	/*background-color:#C03;	
+	border: none;
+	padding: 2px 4px 2px 4px;
+	margin-bottom: -18px;
+	font-family: "Arial", Times, sans-serif;
+	font-size: 12pt;
+	color:#FFF;*/
+	background:url("../images/nav2s.gif") 0 100% no-repeat;
+	padding:10px 10px 10px 10px;
+	cursor:pointer;
+}
+
+.tab.selected {
+	background:url("../images/nav2.gif") 0 100% no-repeat;
+	padding:10px 10px 10px 10px;
+}
+.tab:hover, .tab.hover {
+	background-position:-6px 100%;
+	background:url("../images/nav2.gif") 0 100% no-repeat;
+	cursor: pointer; cursor: hand;
+}
 /* NOTE: You need to specifiy a width for the elements using this class.*/
 .label-emailaddress, .label-phonenumber, .label-homeaddress, .label-workaddress, .label-birthdate {
 	text-align:right;
@@ -45,12 +69,14 @@ Contact List
 
 */
 #contact-panel {
-	background-color:#FF2DFF;
+	background-color:#FF4891;
 	top: 50px;
 	bottom: 10px;
 	width: 100%;
-	height: 100vh;
-	min-height: 92vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
+	//min-height: 92vh;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -68,6 +94,11 @@ Contact List
 	overflow-y: scroll;
 	width: 100%;
 	height: 92%;
+}
+
+.contact-panel-thin #contact-list-container{
+	position: relative;
+	top: 25px;
 }
 .contact-list{
 	/* [disabled]margin: 0px; */
@@ -172,11 +203,11 @@ Contact items in thin list mode.
 */
 
 .contact-panel-thin {
-	width: 20% !important;
+	width: 240px !important;
 	margin: 0 !important;
 }
 .contact-panel-thin #contact-panel-addbutton {
-	display:none !important;
+	//display:none !important;
 }
 
 .contact-panel-thin .contact-item-grid {
@@ -227,6 +258,7 @@ Contact items in thin list mode.
 	display: inline-block;
 	z-index: 0;    /* makes email address NOT clickable. */
 	/* z-index: 2; */
+	width:100%;
 }
 .contact-panel-thin .contact-item-grid-phonenumber {
 	display: inline-block;
@@ -241,7 +273,7 @@ Contact items in thin list mode.
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
 	color: #666;
-	width: 30px;
+	width: 20px;
 	overflow:visible;
 }
 .contact-panel-thin .contact-item-grid-view-on-click {
@@ -431,7 +463,7 @@ Contact items in grid mode.
 	font: bold 12px arial, sans-serif;
 	display: inline-block;
 	color: #666;
-	width: 40px;
+	width: 20px;
 	overflow:visible;
 }
 .contact-item-grid-view-on-click {
@@ -454,25 +486,23 @@ Contact View - view the contact info.
 #contact-viewer {
 	position: absolute;
 	top: 0;
-	left: 20%;
+	left: 240px;
 	background-color:#FC3;
-	width: 80%;
-	height: 100vh;
+	width: 75%;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 }
 
 #contact-view-delete{
-	position: relative;
-    left: 80%;
-    top: 10%;
+	position:relative;
+    top:2px;
 }
 
 .contact-viewer-inactive {
 	display: none;	
 }
 
-#contact-view-editbutton {
-	float: right;
-}
 .contact-view-image-container {
 	width: 256px;
 	height: 256px;
@@ -493,6 +523,7 @@ Contact View - view the contact info.
 	font: 40px arial, sans-serif;
 }
 
+
 .contact-view-phonenumber-container {
 	position:absolute;
 	left: 300px;
@@ -508,19 +539,19 @@ Contact View - view the contact info.
 .contact-view-birthdate-container {
 	position:absolute;
 	left: 300px;
-	top: 190px;
+	top: 120px;
 	display: inline-block;
 }
 .contact-view-workaddress-container {
 	position:absolute;
 	left: 300px;
-	top: 210px;
+	top: 150px;
 	display: inline-block;
 }
 .contact-view-homeaddress-container {
 	position:absolute;
 	left: 300px;
-	top: 400px;
+	top: 180px;
 	display: inline-block;
 }
 .contact-view-phonenumber {
@@ -547,10 +578,14 @@ Contact View - view the contact info.
 	overflow:visible;
 }
 
+
 #contact-view-group-container {
 	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
-	top: 70vh;
+	top: 210px;
 	left: 300px;
+	background-color:#FF9;
+	width: 270px;
+	height: 160px;
 }
 
 .contact-view-group-item {
@@ -583,6 +618,9 @@ Contact View - view the contact info.
 	vertical-align: bottom;
 	top: 110px;
 	left:0px;
+	background-color:#FF6;
+	width:100%;
+	
 }
 
 /*
@@ -597,11 +635,45 @@ Contact editor.
 #contact-editor {
 	position: absolute;
 	top: 0;
-	left: 20%;
+	left: 240px;
 	background-color:#FC3;
-	width: 80%;
-	height: 100vh;
+	width: 75%;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 }
+
+#contact-editor .contact-view-phonenumber-container {
+	position:absolute;
+	left: 300px;
+	top: 65px;
+	display: inline-block;
+}
+#contact-editor .contact-view-emailaddress-container {
+	position:absolute;
+	left: 300px;
+	top: 90px;
+	display: inline-block;
+}
+#contact-editor .contact-view-birthdate-container {
+	position:absolute;
+	left: 300px;
+	top: 120px;
+	display: inline-block;
+}
+#contact-editor .contact-view-workaddress-container {
+	position:absolute;
+	left: 300px;
+	top: 150px;
+	display: inline-block;
+}
+#contact-editor .contact-view-homeaddress-container {
+	position:absolute;
+	left: 300px;
+	top: 210px;
+	display: inline-block;
+}
+
 
 #contact-edit-button-container {
 	position: absolute;
@@ -614,12 +686,28 @@ Contact editor.
 #contact-edit-cancelbutton {
 	background-color:#F6F; 
 }
+#contact-edit-deletebutton {
+	background-color:#F6F; 
+}
+
+.contact-edit-image-container {
+	width: 256px;
+	height: 256px;
+	overflow:hidden;
+	position:absolute;
+	left: 4px;
+	top: 4px;
+}
 
 #contact-edit-group-container {
-	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
-	top: 70vh;
+	position: relative;
+	top: 270px;
 	left: 300px;
+	background-color:#FF9;
+	width: 310px;
+	height: 160px;
 }
+
 
 .contact-edit-group-item {
 	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
@@ -677,7 +765,9 @@ Contact editor.
 	left: 0;
 	background-color:#FC3;
 	width: 100%;
-	height: 100vh;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 	z-index: 3;  /* puts it higher than the contact list email addresses. */
 }
 #contact-add-name-container {
@@ -747,14 +837,32 @@ Group List
 #group-panel-label {
 	font: 25px arial, sans-serif;
 }
-#group-list-container {
+#group-list {
+	background-color:#FF4891;
+	top: 50px;
+	bottom: 10px;
+	width: 100%;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
+	margin: 0 auto;
+	overflow: hidden;
+}
+#group-list-container, #group-view-contact-list-container, #group-edit-contact-list-container {
 	padding: 0px 0px 0px 0px;
 	overflow-y: scroll;
 	width: 100%;
 	height: 92%;
 	margin: 0 auto;  /* centers the container. */
 }
-.group-list{
+#group-edit-contact-list-container {
+	position:absolute;
+	top:10px;
+	left:440px;
+	width:200px;
+	background-color:#FF6;
+}
+#group-list, #group-viewer, #group-editor{
 	/*
 	min-width:800px;
 	max-width:100%;
@@ -765,7 +873,347 @@ Group List
 	list-style-type: none;
 	display: block;
 	margin: 0 auto;  /* centers the container. */
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
 }
-.group-list-inactive {
-	display: none;	
+#group-list-container {
+	padding: 0px 0px 0px 0px;
+	overflow-y: scroll;
+	width: 100%;
+	height: 92%;
+}
+.group-list{
+	/* [disabled]margin: 0px; */
+	padding: 0px;
+	list-style-type: none;
+	display: block;
+}
+
+/* 
+Thin group list.
+*/
+.group-list-thin {
+	width: 20% !important;
+	margin: 0 !important;
+}
+
+.group-list-thin .contact-item-grid {
+	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
+	margin: 1px 0px 1px 0px;
+	background-color:#FC9;
+	height: 60px;
+	width: 100%;
+}
+
+.group-list-thin .contact-item-grid-image-container {
+	width: 80px;
+	height: 60px;
+	overflow:hidden;
+	position:absolute;
+	padding: -10px 0 0 0;
+	left: 0px;
+	top: 0px;
+}
+.group-list-thin .contact-item-grid-image {
+	width: 80px;
+	height: 80px;	
+}
+
+.group-list-thin .contact-item-grid-label-container {
+	padding: 1px 2px 1px 3px;
+	position: absolute;
+	top: 23px;
+	left: 80px;
+	background-color:transparent;
+	white-space:nowrap;
+}
+.group-list-thin .contact-item-grid-name {
+	font: 20px arial, sans-serif;
+}
+
+
+.group-list-thin .contact-item-grid-view-on-click {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+    display: block;
+    height: 100%;
+    width: 100%;
+	z-index: 1;
+	cursor:pointer;  /* makes cursor indicate clickability */
+}
+
+.group-list-thin .contact-item-grid:hover .contact-item-grid-label-container, 
+.group-list-thin .contact-item-grid.hover .contact-item-grid-label-container {
+	position: absolute;
+	width: 100%;
+	height: 70px;
+	left: 80px;
+	top: 0px;
+	text-overflow:crop;
+	overflow:hidden;
+	background-color:#F99;
+}
+
+
+/* 
+Group View
+*/
+#group-viewer {
+	position: absolute;
+	top: 0;
+	left: 20%;
+	width: 80%;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
+	background-color:#FF9;
+}
+.group-view {
+	position:absolute;
+	top:30px;
+	left:0px;
+}
+.group-view-image {
+	width:100%;
+	height:100%;
+}
+.group-view-image-container, .group-view{
+	z-index:0;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+#group-view-contact-list-container {
+	position:absolute;
+	top:30px;
+	left:0px;
+	background-color:rgba(255,255,255,0.5);
+}
+
+#group-view-button-container {
+	position:absolute;
+	right:0;
+	top:0;
+}
+#group-view-delete {
+	//position:absolute;
+	//top:0px;
+	//left:140px;
+	position: relative;
+	top: 2px;
+}
+#group-view-editbutton {
+	//position:absolute;
+	//top:0px;
+	//left:280px;
+}
+.group-view-name {
+	padding:0;
+	margin:0;
+	position:absolute;
+	top:0px;
+	left:0px;
+	color:#FFF;
+}
+.group-view-name h2{
+	padding:0;
+	margin:0;
+}
+.group-item-on-click {
+	position: relative;
+	left: 0px;
+	top: 0px;
+    display: block;
+    height: 100%;
+    width: 100%;
+	z-index: 1;
+	cursor:pointer;
+}
+
+
+/* Group edit */
+#group-editor {
+	background-color:#F96;	
+	position: absolute;
+	top: 0;
+	left: 20%;
+	width: 80%;
+	height: -moz-calc(100% - 170px);
+    height: -webkit-calc(100% - 170px);
+    height: calc(100% - 170px);
+}
+.group-edit-image-container {
+	width: 400px;
+	height: 256px;
+	overflow:hidden;
+}
+.group-edit-image {
+	height: 256px;
+}
+/* Show label for indicating changing group photo. */
+.group-edit-image-container:hover .contact-add-photo-edit-label, 
+.group-edit-image-container.hover .contact-add-photo-edit-label {
+	width:100%;
+	height: 100%;
+	display: initial !important; 
+}
+
+
+.group-edit-contact-item-on-click {
+	position: relative;
+	left: 0px;
+	top: 0px;
+    display: block;
+    height: 100%;
+    width: 100%;
+	z-index: 1;
+	cursor:pointer;  /* makes cursor indicate clickability */
+}
+
+.group-edit-contact-remove-label {
+	position:absolute;
+	top:0px;
+	left:0px;
+    display: none;
+    width: 180px !important;
+    height: 180px !important;
+    z-index: 1;
+}
+.group-edit-contact-image-container {
+	width: 180px;
+	height: 180px;
+	overflow:hidden;
+	position:absolute;
+	left: 0px;
+	top: 0px;
+}
+.group-edit-contact-image, group-edit-contact-remove-label {
+	width: 180px;
+	height: 180px;	
+}
+
+/* Show label for indicating removing contact. */
+.group-edit-contact-item-on-click:hover .group-edit-contact-remove-label, 
+.group-edit-contact-item-on-click.hover .group-edit-contact-remove-label {
+	width:100%;
+	height: 100%;
+	display: initial !important; 
+}
+.contact-item-grid:hover .group-edit-contact-remove-label, 
+.contact-item-grid.hover .group-edit-contact-remove-label {
+	width:100%;
+	height: 100%;
+	display: initial !important; 
+	z-index:0;
+}
+
+/* Groups Inactive */
+.group-list-inactive, .group-viewer-inactive, .group-editor-inactive {
+	display: none !important;	
+}
+
+.history-list-inactive, .history-viewer-inactive, .history-editor-inactive {
+	display: none !important;	
+}
+
+/*
+Misc.
+*/
+#contact-search-form {
+	position:absolute;
+	left:45%;	
+}
+
+.contact-panel-thin #contact-search-form {
+	top:26px;
+	left:25px !important;	
+}
+#contact-search-submit {
+	padding:0;
+	border:thin;
+	position:relative;
+    top:5px;
+}
+.search-icon {
+	width: 20px;
+	height: 20px;
+	cursor:pointer;
+}
+
+.contact-action-icon{
+	width: 20px;
+	height: 20px;
+	cursor:pointer;
+	margin-bottom:-5px;
+}
+.contact-panel-thin .contact-action-icon{
+	width: 15px;
+	height: 15px;
+	cursor: none;
+}
+
+#contact-panel-addbutton {
+	padding:0px;
+	border:none;
+	background-color:rgba(255,255,255,0.5);
+	margin:1px;
+}
+.contact-action-icon2{
+	width: 35px;
+	height: 35px;
+	cursor:pointer;
+	//margin-bottom:-5px;
+}
+.contact-panel-thin .contact-action-icon2{
+	width: 25px;
+	height: 25px;
+}
+
+.contact-panel-add-label {
+	padding:0;
+	margin:0;
+	display:inline;
+	//vertical-align:middle;
+}
+.contact-panel-thin .contact-panel-add-label {
+	padding:0;
+	margin:0;
+	display:none !important;
+}
+
+.contact-view-phonenumber-container .contact-action-icon,
+.contact-view-emailaddress-container .contact-action-icon {
+	cursor:pointer;
+	position:absolute;
+	left:220px;
+}
+
+.viewer-action-icon {
+	width: 15px;
+	height: 15px;
+	cursor:pointer;
+}
+
+.contact-view-actions-container {
+	float:right;
+}
+
+
+#group-edit-button-container {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;	
+}
+#group-edit-savebutton {
+	background-color:#C39;
+}
+#group-edit-cancelbutton {
+	background-color:#F6F; 
+}
+#group-edit-deletebutton {
+	background-color:#F6F; 
 }
