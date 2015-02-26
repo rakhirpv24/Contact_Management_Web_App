@@ -3,21 +3,19 @@ Utilities for Contact List.
 */
 
 var users = [
-	{firstName: "Barack", lastName: "Obama", email: "obama@sjsu.edu", cell: "(408)555-1234", photo: "images/obama.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Barack2", lastName: "Obama2", email: "obama2@sjsu.edu", cell: "(408)555-1234", photo: "images/obama2.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron", lastName: "Mak", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron2", lastName: "Mak2", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron3", lastName: "Mak3", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Ron4", lastName: "Mak4", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "Doublecheese", lastName: "Burger", email: "mcdonalds@sjsu.edu", cell: "(408)555-1234", photo: "images/burger.png", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"},
-	{firstName: "French", lastName: "Fries", email: "fries@sjsu.edu", cell: "(408)555-1234", photo: "images/fries.png", birthdate: "1/1/2015", homeAddress: "One Washington Square, San Jose, CA 95192", workAddress: "One Washington Square, San Jose, CA 95192"
-	}];
+	{firstName: "Barack", lastName: "Obama", email: "obama@sjsu.edu", cell: "(408)555-1234", photo: "images/obama.jpg", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Leonardo", lastName: "", email: "leo@gmail.com", cell: "(408)555-2314", photo: "images/leonardo.jpg", birthdate: "16/1/1915", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Rakhi", lastName: "Verma", email: "rpv@sjsu.edu", cell: "(408)555-1234", photo: "images/no-image.png", birthdate: "1/1/1989", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Tom", lastName: "Cruise", email: "tom@yahoo.com", cell: "(408)505-1234", photo: "images/tom_cruise.jpg", birthdate: "13/1/1976", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Emma", lastName: "Watson", email: "emma@sjsu.edu", cell: "(408)055-1234", photo: "images/emma_watson.jpg", birthdate: "1/1/1985", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Bhavna", lastName: "Gurnani", email: "gurnani@sjsu.edu", cell: "(650)555-1234", photo: "images/no-image.png", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Tom", lastName: "Jerry", email: "jerry@aol.com", cell: "(658)555-1234", photo: "images/tom.jpg", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"}];
 var globalContactInfo;
 
 var groups = [
-	{name: "Friends", photo: "images/group1.jpg"},
-	{name: "Coworkers", photo: "images/group2.jpg"},
-	{name: "Important", photo: "images/group3.jpg"}
+	{name: "Friends", photo: "images/friends.png"},
+	{name: "Coworkers", photo: "images/coworkers.png"},
+	{name: "Family", photo: "images/family.png"}
 ];
 
 // Default contact info.
@@ -57,16 +55,19 @@ var contactUtilities = new function() {
 	this.refreshContactList = function(contacts) {
 		var contactListContainer = jQuery('#contact-list-container');
 		var contactList = jQuery('<ol class="contact-list"></ol>');
+		console.log("Contacts length in refresh= " + contacts.length);
 		contactListContainer.empty();
 		contactListContainer.append(contactList);
 		for (var i = 0; i < contacts.length; i++) {
 			var contact = contacts[i];
 			this.addContactToList(contactList, contact);
+			console.log("Printing for " + i);
 			// Highlight the contact if it is the currently selected one.
 			if(contact.firstName == globalContactInfo.firstName && contact.lastName == globalContactInfo.lastName) {
 				this.highlightContact(contact);
 			}
 		}
+		contactUtilities.showContactPanelFullOnly();
 	}
 	
 	/* Show contact panel full, and other panels are deactivated. */
@@ -79,6 +80,7 @@ var contactUtilities = new function() {
 		this.hideContactAdder();
 		this.hideGroupViewer();
 		this.hideGroupEditor();
+		this.hideHistoryList();
 		// Make only the correct tab show it is selected.
 		$(".tab").removeClass("selected");
 		$("#tab-contacts").addClass("selected");
@@ -104,9 +106,26 @@ var contactUtilities = new function() {
 		this.hideContactAdder();
 		this.hideGroupViewer();
 		this.hideGroupEditor();
+		this.hideHistoryList();
 		// Make only the correct tab show it is selected.
 		$(".tab").removeClass("selected");
 		$("#tab-groups").addClass("selected");
+	}
+	/*Show history */
+	this.showHistoryList = function() {
+		jQuery('#history-list').removeClass("history-list-inactive");
+		this.hideContactPanel();
+		this.hideContactViewer();
+		this.hideContactEditor();
+		this.hideContactAdder();
+		this.hideGroupViewer();
+		this.hideGroupEditor();
+		this.hideGroupList();
+		$(".tab").removeClass("selected");
+		$("#tab-history").addClass("selected");
+	}
+	this.hideHistoryList = function() {
+		jQuery('#history-list').addClass("history-list-inactive");
 	}
 	/* Show group list as full grid. */
 	this.showGroupList = function() {
@@ -183,7 +202,7 @@ var contactUtilities = new function() {
 		var deleteButton;
 		var panel;
 		// Make the button for editing the contact.
-		editButton = jQuery('<button id="contact-view-editbutton">edit contact</button>');
+		editButton = jQuery('<button id="contact-view-editbutton">Edit Contact</button>');
 		// When the edit button is clicked, show the edit screen.
 		editButton.click(function(self) {
 			return function() {
@@ -244,10 +263,10 @@ var contactUtilities = new function() {
 		return '<div class="contact-view">'
 				   + '<div class="contact-view-name">' + contactInfo.firstName + ' ' + contactInfo.lastName + '</div>'
 				   + '<div class="contact-view-image-container"><img class="contact-view-image" src="' + contactInfo.photo + '" alt="A Contact" /></div>'
-				   + '<div class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div><img src="images/call-button.png" alt="call" class="contact-action-icon"/></div>'
-					+ '<a href="mailto:'+ contactInfo.email +'"><div class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress">email</div><div class="contact-view-emailaddress">' + contactInfo.email +'</div><img src="images/email-button.png" alt="email"  class="contact-action-icon"/></div></a>'
-					+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
-					+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
+				   + '<div class="contact-view-phonenumber-container" title="Call '+ contactInfo.firstName +'"><div class="contact-view-phonenumber-label label-phonenumber">Phone</div><div class="contact-view-phonenumber">' + contactInfo.cell + '</div><img src="images/call-button.png" alt="call" class="contact-action-icon"/></div>'
+					+ '<a href="mailto:'+ contactInfo.email +'"><div class="contact-view-emailaddress-container" title="Email '+ contactInfo.firstName +'"><div class="contact-view-emailaddress-label label-emailaddress">Email</div><div class="contact-view-emailaddress">' + contactInfo.email +'</div><img src="images/email-button.png" alt="email"  class="contact-action-icon"/></div></a>'
+					+ '<div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">Home</div><div class="contact-view-homeaddress">' + contactInfo.homeAddress +'</div></div>'
+					+ '<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">Work</div><div class="contact-view-workaddress">' + contactInfo.workAddress +'</div></div>'
 					+ '<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">' + contactInfo.birthdate +'</div></div>'
 					+ '<div id="contact-view-group-container">'
             		+ '<div id="contact-view-group-label">Groups</div>'
@@ -261,7 +280,7 @@ var contactUtilities = new function() {
 	this.makeContactViewGroupItemString = function(info) {
 		return '<div class="contact-view-group-item">'
 						+ '<div class="contact-view-group-item-on-click clickable"></div>'
-						+ '<div class="contact-view-group-item-image-container"><img class="contact-view-group-item-image" src="'+ info.photo +'" alt="'+ info.name +'" /></div>'
+						+ '<div class="contact-view-group-item-image-container"><img width = "30px" height = "30px" class="contact-view-group-item-image" src="'+ info.photo +'" alt="'+ info.name +'" /></div>'
 						+ '<div class="contact-view-group-item-label-container">'
 						+ '<div class="contact-view-group-item-name">'+ info.name + '</div>'
                         + '</div>'
@@ -298,7 +317,15 @@ var contactUtilities = new function() {
 	
 	/* Show the panel for creating a contact. */
 	this.showContactAdder = function() {
-		jQuery('#contact-adder').removeClass("contact-adder-inactive");	
+		jQuery('#contact-adder').removeClass("contact-adder-inactive");
+		contactUtilities.hideContactPanel();
+		contactUtilities.hideGroupList();
+		// Make contact panel full size and hide contact viewer and editor.
+		contactUtilities.hideContactViewer();
+		contactUtilities.hideContactEditor();
+		contactUtilities.hideGroupViewer();
+		contactUtilities.hideGroupEditor();
+		contactUtilities.hideHistoryList();	
 	}
 	this.hideContactAdder = function() {
 		jQuery('#contact-adder').addClass("contact-adder-inactive");	
@@ -508,6 +535,7 @@ function initGroupList() {
 	groupListContainer.append(groupList);
 	for (var i = 0; i < groups.length; i++) {
 		var group = groups[i];
+		console.log("Printing for group: " + i);
 		contactUtilities.addGroupToList(groupList, group);
 	}
 }
@@ -522,6 +550,9 @@ window.addEventListener('load', function(e) {
 	});
 	jQuery('#tab-groups').click(function() {
 		contactUtilities.showGroupListOnly();
+	});
+	jQuery('#tab-history').click(function() {
+		contactUtilities.showHistoryList();
 	});
 	
 	// Stuff
@@ -586,6 +617,8 @@ window.addEventListener('load', function(e) {
 		
 		var contactList = jQuery(document.getElementById("contact-list-id"));
 		contactUtilities.addContactToList(contactList, users[users.length-1]);
+		globalContactInfo = users[users.length-1];
+		console.log("Users length in save= " + users.length);
 
 		contactUtilities.hideContactAdder();
 		// Refresh cotnact list.
@@ -594,7 +627,7 @@ window.addEventListener('load', function(e) {
 	jQuery('#contact-add-cancelbutton').click(function(){
 		contactUtilities.hideContactAdder();
 		// Refresh Contact List
-		contactUtilities.refreshContactList(users);
+		contactUtilities.showContactPanelFullOnly();
 		
 	});
 	

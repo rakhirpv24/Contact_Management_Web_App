@@ -15,29 +15,35 @@
 <body>
 	<!-- Header content -->
 <header>
-	<div align="right" style="float:right;">
-    <button type="button" onClick="window.location.href = 'home.html'">Logout</button>
-    </div>
-  <div class="profileLogo" align="left"> 
-    <!-- Profile logo. Add a img tag in place of <span>. -->
-    <h1>Contact Manager <img src="images/logo.png" height="95" width="115" align = "left"></img></h1>
-    <p>Manage your contacts without hassle</p>
-    </div>
-
-</header>
+    <p style="text-align:left;"> 
+<a href = "contact-list.html"> <img src="images/logo.png" height="85" width="105" align = "left"></img></a> </p>
+  <p><h1> Contact Management System </h1><h3><span style="float:left;">  Manage your contacts without hassle! </span> 
+<span style="float:right;"> Welcome admin!! <input type="submit" name="Signout" value="Signout" onClick="window.location.href='Login.html'"></input> </span> 
+</h3></p>
+  </header>
+  <br />
+  <br />
 	<!-- The tabs. -->
 	<hr />
-  <div class="tabs-menu"><button id="tab-contacts" class="tab selected">Contacts</button><button id="tab-groups" class="tab">Groups</button><button id="tab-history" class="tab">History</button><button id="tab-myprofile" class="tab">My Profile</button></div>
+  <div  id="nav" align="center">
+		<ul>
+			<li class="tab" id="tab-contacts">Contacts</li>
+			<li class="tab" id="tab-groups">Groups</li>
+			<li class="tab" id="tab-history">History</li>
+		</ul>
+	</div>
   <hr />
-	<div style="position:relative; width:100%; height:100%;">
+	<div style="position:relative;">
     	<!-- Contact List -->
         <div id="contact-panel">
-            <button id="contact-panel-addbutton" title="add new contact" class="clickable"><img class="contact-action-icon2" src="images/add-contact-icon.png" alt="Add new Contact"/><p class="contact-panel-add-label">new contact</p></button>
-            <form action="#" onsubmit="return false;" id="contact-search-form">
-                <input type="text" id="contact-search-input"/>
+        <table>
+        <tr>
+        <td align="right">
+            <button id="contact-panel-addbutton" title="add new contact" class="clickable"><img src="images/dynamicImage1.png" alt="Add new Contact" width = "50px" height="40px"/></button></td>
+            <td ><form action="#" onsubmit="return false;" id="contact-search-form">
+                <input type="text" id="contact-search-input" size="10" />
                 <button id="contact-search-submit" title="search"><img class="search-icon" src="images/search-icon.png" alt="Search"/></button>
-            </form>
-            <span id="contact-panel-label">Contacts</span>
+            </form></td></tr></table>
     
             <div id="contact-list-container"></div>
         </div>
@@ -48,10 +54,10 @@
         <div id="contact-editor" class="contact-editor-inactive">
             <div id="contact-add-name-container" ><input type="text" class="contact-add-name-textfield" placeholder="First name" value="Ron"/> <input type="text" class="contact-add-name-textfield" placeholder="Last name" value="Mak" /></div>
                 <div class="contact-edit-image-container clickable"><img class="contact-add-photo-edit-label" src="images/photo-edit-label.png" alt="Select a photo" /><img class="contact-view-image" src="images/ron.jpg" alt="A Contact" /></div>
-                <div class="contact-view-phonenumber-container"><div class="contact-view-phonenumber-label label-phonenumber">cell</div><input type="text" placeholder="phone number"  value="(408)555-1234"/></div>
-                <div class="contact-view-emailaddress-container "><div class="contact-view-emailaddress-label label-emailaddress">email</div><input type="text" placeholder="email address" value="ron.mak@sjsu.edu" /></div>
-                <div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">home</div><div class="contact-view-homeaddress"><textarea rows="2" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
-							<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">work</div><div class="contact-view-workaddress"><textarea rows="2" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
+                <div class="contact-view-phonenumber-container"><div class="contact-view-phonenumber-label label-phonenumber">Phone</div><input type="text" placeholder="phone number"  value="(408)555-1234"/></div>
+                <div class="contact-view-emailaddress-container "><div class="contact-view-emailaddress-label label-emailaddress">Email</div><input type="text" placeholder="email address" value="ron.mak@sjsu.edu" /></div>
+                <div class="contact-view-homeaddress-container"><div class="contact-view-homeaddress-label label-homeaddress">Home Address</div><div class="contact-view-homeaddress"><textarea rows="2" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
+							<div class="contact-view-workaddress-container"><div class="contact-view-workaddress-label label-workaddress">Work Address</div><div class="contact-view-workaddress"><textarea rows="2" cols="22">One Washington Square, San Jose, CA 95192</textarea></div></div>
 							<div class="contact-view-birthdate-container"><div class="contact-view-birthdate-label label-birthdate">DOB</div><div class="contact-view-birthdate">
                             	<select class="contact-edit-birthdate-month"></select>
                                 <select class="contact-edit-birthdate-date"></select>
@@ -98,6 +104,31 @@
         </div>
 
 
+<!--History Page-->
+  <div id = "history-list" class= "history-list-inactive">
+  <p style="text-align:left">
+<a> <img src="images/tom.jpg" width="50" height="50"> Tom Jerry </a> 
+<span style="float:right"> <a> <img src="images/call_new.png" width="30" height="30"> </a> 2/25/2015 20:00 10 seconds <a href="#0.1_"> <img src="images/information.jpg" width="50" height="50"> </a></span>
+</p>
+<p style="text-align:left">
+<a> <img src="images/emma_watson.jpg" alt="Select Picture" width="50" height="50"> Emma Watson </a>
+<span style="float:right"> <a> <img src="images/call_new.png" width="30" height="30"> </a> 2/25/2015 19:50 10 minutes <a href="#0.1_"> <img src="images/information.jpg" width="50" height="50"> </a></span>
+</p>
+<p style="text-align:left">
+<a> <img src="images/obama.jpg" alt="Select Picture" width="50" height="50"> Barack Obama</a>
+<span style="float:right"> <a> <img src="images/call_new.png" width="30" height="30"> </a> 2/25/2015 13:50 1 minute <a href="#0.1_"> <img src="images/information.jpg" width="50" height="50"> </a></span>
+</p>
+<p style="text-align:left">
+<a> <img src="images/leonardo.jpg" alt="Select Picture" width="50" height="50"> Leonardo </a>
+<span style="float:right"><a> <img src="images/email_new.PNG" width="30" height="30"> </a> 2/25/2015 10:50 <a href="#0.1_"> <img src="images/information.jpg" width="50" height="50"> </a></span>
+</p>
+<p style="text-align:left">
+<a> <img src="images/tom_cruise.jpg" alt="Select Picture" width="50" height="50"> Tom Cruise </a>
+<span style="float:right"><a> <img src="images/email_new.PNG" width="30" height="30"> </a> 2/25/2015 9:50 <a href="#0.1_"> <img src="images/information.jpg" width="50" height="50"> </a></span>
+</p>
+
+</div>
+
         <!-- Adding a new contact. -->     
   <script>
   $(function() {
@@ -105,52 +136,90 @@
   });
   </script>
   <!-- Adding a new contact. -->
-  <div id="contact-adder" class="contact-adder-inactive"> 
-  	<div class="contact-add-image-container clickable" title="Click to choose a photo"><img class="contact-add-image" src="images/no-image.png" alt="A Contact" /></div>
-    <div>
-      <p>
+  <div id="contact-adder" class="contact-adder-inactive" > 
+  	<div class="contact-add-image-container clickable" title="Click to choose a photo" ><img class="contact-add-image" src="images/no-image.png" alt="A Contact" /></div>
+    <div align="center">
+    <table   >
+    
+    <tr>
+    	<td align="right">
         <label><strong>First Name: </strong></label>
+        </td>
+        <td align="left">
         <input type="text" id = "addcontact-firstname" name="addcontact-firstname" value="" placeholder="First Name" align="right" autofocus>
-      </p>
-      <p>
+        </td>
+     </tr>
+     
+     <tr>
+    	<td align="right">
         <label><strong>Last Name: </strong></label>
+        </td>
+        <td align="left">
         <input type="text" id = "addcontact-lastname" name="addcontact-lastname" value="" placeholder="Last Name" align="right">
-      </p>
-      <p>
+        </td>
+     </tr>
+     
+      <tr>
+    	<td align="right">
         <label><strong>Email ID: </strong></label>
+        </td>
+        <td align="left">
         <input type="text" id = "addcontact-email" name="addcontact-email" value="" placeholder="Email ID" align="right">
-      </p>
-      <p>
+      </td>
+     </tr>
+     
+     <tr>
+    	<td align="right">
         <label><strong>Phone Number: </strong></label>
+        </td>
+        
+        <td align="left">
         <input type="text" id = "addcontact-phone" name="addcontact-phone" value="" placeholder="Phone Number" align="right">
-      </p>
-      <p>
+        </td>
+        </tr>
+     
+     <tr>
+    	<td align="right">
         <label><strong>Date of Birth: </strong></label>
+        </td>
+        
+        <td align="left">
         <input type="text" id = "addcontact-dob" name="addcontact-dob" value="" placeholder="Date Of Birth" align="right">
-      </p>
-      <p>
+       </td>
+        </tr>
+        <tr>
+        <td align="right">
         <label><strong>Home Address: </strong></label>
+        </td>
+        
+        <td align="left">
         <input type="text" id = "addcontact-homeaddress" name="addcontact-homeaddress" value="" placeholder="Residential Address" align="right">
-      </p>
-      <p>
+        </td>
+        </tr>
+        <tr>
+        <td align="right">
         <label><strong>Office Address: </strong></label>
+        </td>
+        <td align="left">
         <input type="text" id = "addcontact-officeaddress" name="officeaddress" value="" placeholder="Office Address" align="right">
-      </p>
-    </div>
-    <div>
-      <p class="submit">
+        </td>
+        </tr>
+     <tr> <td></td>
+      <td></td></tr>
+   <tr>
+        <td align="right">
         <input type="submit"  value="Save" align="right" id = "contact-add-savebutton">
+        </td>
+        <td align="left">
         <input type="submit"  value="Cancel" align="right" id = "contact-add-cancelbutton">
-      </p>
-    </div>
+        </td> </tr>    </table></div>
   </div>
   
   
   
   <!--Group List -->
   <div id="group-list" class="group-list-inactive">
-    <button id="contact-panel-addbutton" class="clickable">add group</button>
-    <span id="group-panel-label">Groups</span>
+    <button id="contact-panel-addbutton" class="clickable">Add group</button>
     <div id="group-list-container"></div>
   </div>
   <!-- Group Viewer -->
@@ -164,7 +233,7 @@
                 </div>
             </div>
             <div id="group-view-button-container">
-                <button id="group-view-editbutton">edit</button>
+                <button id="group-view-editbutton">Edit</button>
                 <button id="group-view-delete" title="delete group"><img class="group-view-image viewer-action-icon" src="images/delete-icon.png" alt="Delete Group"/></button>
             </div>
             <div id="group-view-contact-list-container">

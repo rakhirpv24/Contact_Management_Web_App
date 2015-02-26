@@ -8,7 +8,20 @@ calc: https://developer.mozilla.org/en-US/docs/Web/CSS/calc
 */
 
 body {
-    background-color:#FCC;
+	
+	background-image:url("../images/theme.jpg") ;
+	height:100%;
+	width:100%;
+	
+	background-size:1000px 1200px;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 92%;
+	max-width: 960px;
+	padding-left: 2.275%;
+	padding-right: 2.275%;
 }
 
 html,body {
@@ -31,21 +44,26 @@ And other universal styles.
 	display: inline;
 }
 .tab {
-	background-color:#C03;	
+	/*background-color:#C03;	
 	border: none;
 	padding: 2px 4px 2px 4px;
 	margin-bottom: -18px;
 	font-family: "Arial", Times, sans-serif;
 	font-size: 12pt;
-	color:#FFF;
+	color:#FFF;*/
+	background:url("../images/nav2s.gif") 0 100% no-repeat;
+	padding:10px 10px 10px 10px;
 	cursor:pointer;
 }
 
 .tab.selected {
-	background-color:#FF4891;
+	background:url("../images/nav2.gif") 0 100% no-repeat;
+	padding:10px 10px 10px 10px;
 }
 .tab:hover, .tab.hover {
-	background-color:#F60;
+	background-position:-6px 100%;
+	background:url("../images/nav2.gif") 0 100% no-repeat;
+	cursor: pointer; cursor: hand;
 }
 /* NOTE: You need to specifiy a width for the elements using this class.*/
 .label-emailaddress, .label-phonenumber, .label-homeaddress, .label-workaddress, .label-birthdate {
@@ -64,7 +82,6 @@ Contact List
 
 */
 #contact-panel {
-	background-color:#FF4891;
 	top: 50px;
 	bottom: 10px;
 	width: 100%;
@@ -368,7 +385,7 @@ Contact items in grid mode.
 	height: 70px;
 	left: 0px;
 	top: 130px;
-	background-color: #F99;
+	background-color: #f9d1af; /* grid hover color*/
 	-webkit-transition: all 0.2s ease-out;
 	-moz-transition: all 0.2s ease-out;
 	-ms-transition: all 0.2s ease-out;
@@ -774,11 +791,11 @@ Contact editor.
 	line-height: 25px;	
 }
 .contact-add-image-container {
-	width: 256px;
-	height: 256px;
+	width: 150px;
+	height: 150px;
 	overflow:hidden;
 	position:absolute;
-	left: 340px;
+	left: 180px;
 	top: 4px;
 }
 #contact-add-button-container {
@@ -832,14 +849,13 @@ Group List
 #group-panel-label {
 	font: 25px arial, sans-serif;
 }
-#group-list {
-	background-color:#FF4891;
+#{
 	top: 50px;
 	bottom: 10px;
 	width: 100%;
-	height: -moz-calc(100% - 170px);
+	/*height: -moz-calc(100% - 170px);
     height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);
+    height: calc(100% - 170px);*/
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -868,9 +884,9 @@ Group List
 	list-style-type: none;
 	display: block;
 	margin: 0 auto;  /* centers the container. */
-	height: -moz-calc(100% - 170px);
+	/*height: -moz-calc(100% - 170px);
     height: -webkit-calc(100% - 170px);
-    height: calc(100% - 170px);
+    height: calc(100% - 170px);*/
 }
 #group-list-container {
 	padding: 0px 0px 0px 0px;
@@ -1111,6 +1127,9 @@ Group View
 	display: none !important;	
 }
 
+.history-list-inactive, .history-viewer-inactive, .history-editor-inactive {
+	display: none !important;	
+}
 
 /*
 Misc.
@@ -1148,12 +1167,6 @@ Misc.
 	cursor: none;
 }
 
-#contact-panel-addbutton {
-	padding:0px;
-	border:none;
-	background-color:rgba(255,255,255,0.5);
-	margin:1px;
-}
 .contact-action-icon2{
 	width: 35px;
 	height: 35px;
