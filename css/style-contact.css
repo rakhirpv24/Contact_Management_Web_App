@@ -31,6 +31,11 @@ html,body {
 hr {
 	visibility:hidden;
 }
+
+h3 {
+	font-size: 15pt;
+	margin: 4px;
+}
 /* 
 
 Universal styles for labels, e.g. "email", "phone number". 
@@ -239,8 +244,8 @@ Contact items in thin list mode.
 	top: 0px;
 }
 .contact-panel-thin .contact-item-grid-image {
-	width: 80px;
-	height: 80px;	
+	//width: 80px;
+	height: 60px;	
 }
 
 .contact-panel-thin .contact-item-grid-label-container {
@@ -362,7 +367,7 @@ Contact items in grid mode.
 	top: 0px;
 }
 .contact-item-grid-image {
-	width: 180px;
+	//width: 180px;
 	height: 180px;	
 }
 
@@ -524,7 +529,7 @@ Contact View - view the contact info.
 	top: 4px;
 }
 .contact-view-image {
-	width: 256px;
+	//width: 256px;
 	height: 256px;	
 }
 
@@ -647,42 +652,48 @@ Contact editor.
 #contact-editor {
 	position: absolute;
 	top: 0;
-	left: 240px;
+	//left: 240px;
+	left:0;
 	background-color:#FC3;
-	width: 75%;
+	//width: 75%;
+	width:100%;
+	/*
 	height: -moz-calc(100% - 50px);
     height: -webkit-calc(100% - 50px);
     height: calc(100% - 50px);
+	*/
+	height:435px;
+	z-index: 2;
 }
 
 #contact-editor .contact-view-phonenumber-container {
 	position:absolute;
-	left: 300px;
-	top: 65px;
+	left: 500px;
+	top: 40px;
 	display: inline-block;
 }
 #contact-editor .contact-view-emailaddress-container {
 	position:absolute;
-	left: 300px;
-	top: 90px;
+	left: 500px;
+	top: 65px;
 	display: inline-block;
 }
 #contact-editor .contact-view-birthdate-container {
 	position:absolute;
-	left: 300px;
-	top: 120px;
+	left: 500px;
+	top: 95px;
 	display: inline-block;
 }
 #contact-editor .contact-view-workaddress-container {
 	position:absolute;
-	left: 300px;
-	top: 150px;
+	left: 500px;
+	top: 125px;
 	display: inline-block;
 }
 #contact-editor .contact-view-homeaddress-container {
 	position:absolute;
-	left: 300px;
-	top: 210px;
+	left: 500px;
+	top: 185px;
 	display: inline-block;
 }
 
@@ -707,14 +718,18 @@ Contact editor.
 	height: 256px;
 	overflow:hidden;
 	position:absolute;
-	left: 4px;
+	left: 154px;
 	top: 4px;
+}
+.contact-edit-image-container:hover .contact-add-photo-edit-label, 
+.contact-edit-image-container.hover .contact-add-photo-edit-label {
+	display: initial !important; 
 }
 
 #contact-edit-group-container {
 	position: relative;
-	top: 270px;
-	left: 300px;
+	top: 245px;
+	left: 500px;
 	background-color:#FF9;
 	width: 310px;
 	height: 160px;
@@ -784,11 +799,12 @@ Contact editor.
 }
 #contact-add-name-container {
 	position: absolute;
-	left: 280px;
+	left: 480px;
 	top: 5px;
 }
 .contact-add-name-textfield {
 	line-height: 25px;	
+	font-size: 12pt;
 }
 .contact-add-image-container {
 	width: 150px;
@@ -863,7 +879,7 @@ Group List
 	margin: 0 auto;
 	overflow: hidden;
 }
-#group-list-container, #group-view-contact-list-container, #group-edit-contact-list-container {
+#group-list-container, #group-view-contact-list-container {
 	padding: 0px 0px 0px 0px;
 	overflow-y: scroll;
 	width: 100%;
@@ -872,11 +888,30 @@ Group List
 }
 #group-edit-contact-list-container {
 	position:absolute;
-	top:10px;
-	left:440px;
+	top:60px;
+	//left:440px;
+	left:55px;
+	height: 370px;
 	width:200px;
 	background-color:#FF6;
 }
+#group-edit-contact-list {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 300px;
+	width:190px;
+	background-color:#FFA;
+	margin:0 5px 0 5px;
+}
+#group-edit-addgroupbutton {
+	position:relative;
+	left: 82px;
+}
+#addgroup-name {
+	height: 23px;
+	font-size: 30px;
+}
+
 #group-list, #group-viewer, #group-editor{
 	/*
 	min-width:800px;
@@ -933,8 +968,8 @@ Thin group list.
 	top: 0px;
 }
 .group-list-thin .contact-item-grid-image {
-	width: 80px;
-	height: 80px;	
+	//width: 80px;
+	height: 60px;	
 }
 
 .group-list-thin .contact-item-grid-label-container {
@@ -1057,17 +1092,24 @@ Group View
 	background-color:#F96;	
 	position: absolute;
 	top: 0;
-	left: 20%;
-	width: 80%;
+	left: 0;
+	width: 100%;
+	/*
 	height: -moz-calc(100vh - 50px);
     height: -webkit-calc(100vh - 50px);
     height: calc(100vh - 50px);
+	*/
+	height:435px;
+	z-index: 2;
 }
 .group-edit-image-container {
 	width: 400px;
 	height: 256px;
 	overflow:hidden;
 	margin:5px;
+	position:absolute;
+	top:70px;
+	left:300px;
 }
 .group-edit-image {
 	height: 256px;

@@ -92,7 +92,7 @@
 				var groupContainer = jQuery('#contact-edit-group-container');
 				groupContainer.append( jQuery(contactUtilities.makeContactEditGroupItemString(groups[0])) );
 				groupContainer.append( jQuery(contactUtilities.makeContactEditGroupItemString(groups[1])) );
-				groupContainer.append( jQuery('<button id="contact-edit-addgroupbutton" title="Add to Group"><img class="group-add-image viewer-action-icon" src="images/group-contact-add-icon.png" alt="Add Contact to Group"/></button>') );	
+				groupContainer.append( jQuery('<button id="contact-edit-addgroupbutton" title="Add a Group"><img class="group-add-image viewer-action-icon" src="images/group-contact-add-icon.png" alt="Add Contact to Group"/></button>') );	
 				</script>
 	        </div>
 			<div id="contact-edit-button-container">
@@ -247,11 +247,11 @@
     <!-- Group Editor -->
     <div id="group-editor" class="group-editor-inactive">
         <label><strong>Group Name</strong></label>
-        <input type="text" id = "addgroup-name" name="addgroup-name" value="Friends" placeholder="Group Name" align="right" >
+        <input type="text" id = "addgroup-name" name="addgroup-name" value="Friends" placeholder="Name of the group" align="right" >
         <div class="group-edit-image-container clickable"><img class="contact-add-photo-edit-label" src="images/photo-edit-label.png" alt="Select a photo" /><img class="group-edit-image" src="images/group1.jpg" alt="Group" />
         </div>
         <div id="group-edit-contact-list-container">
-        	<h2>Contacts</h2>
+        	<h3>Contacts</h3>
         	<ol id="group-edit-contact-list" class="contact-list">
             	<li>
                 	<div class="contact-item-grid">
@@ -269,7 +269,7 @@
                     </div>
                 </li>
              </ol>
-             <button id="group-edit-addgroupbutton" title="Add to Group"><img class="group-add-image viewer-action-icon" src="images/group-contact-add-icon.png" alt="Add Contact to Group"/></button>
+             <button id="group-edit-addgroupbutton" title="Add a Contact to this Group"><img class="group-add-image viewer-action-icon" src="images/group-contact-add-icon.png" alt="Add Contact to Group"/></button>
         </div>
         <div id="group-edit-button-container">
             <button>delete</button>

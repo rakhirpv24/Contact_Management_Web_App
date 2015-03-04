@@ -4,12 +4,13 @@ Utilities for Contact List.
 
 var users = [
 	{firstName: "Barack", lastName: "Obama", email: "obama@sjsu.edu", cell: "(408)555-1234", photo: "images/obama.jpg", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Bhavna", lastName: "Gurnani", email: "gurnani@sjsu.edu", cell: "(650)555-1234", photo: "images/no-image.png", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Emma", lastName: "Watson", email: "emma@sjsu.edu", cell: "(408)055-1234", photo: "images/emma_watson.jpg", birthdate: "1/1/1985", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
 	{firstName: "Leonardo", lastName: "", email: "leo@gmail.com", cell: "(408)555-2314", photo: "images/leonardo.jpg", birthdate: "16/1/1915", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
 	{firstName: "Rakhi", lastName: "Verma", email: "rpv@sjsu.edu", cell: "(408)555-1234", photo: "images/no-image.png", birthdate: "1/1/1989", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
 	{firstName: "Tom", lastName: "Cruise", email: "tom@yahoo.com", cell: "(408)505-1234", photo: "images/tom_cruise.jpg", birthdate: "13/1/1976", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
-	{firstName: "Emma", lastName: "Watson", email: "emma@sjsu.edu", cell: "(408)055-1234", photo: "images/emma_watson.jpg", birthdate: "1/1/1985", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
-	{firstName: "Bhavna", lastName: "Gurnani", email: "gurnani@sjsu.edu", cell: "(650)555-1234", photo: "images/no-image.png", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
 	{firstName: "Tom", lastName: "Jerry", email: "jerry@aol.com", cell: "(658)555-1234", photo: "images/tom.jpg", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"}];
+	
 var globalContactInfo;
 
 var groups = [
@@ -147,9 +148,9 @@ var contactUtilities = new function() {
 		this.hideGroupEditor();
 		this.showGroupListThin();
 		jQuery('#group-viewer').removeClass("group-viewer-inactive");
-		// Make only the correct tab show it is selected.
+		// Make no tab show it is selected.
 		$(".tab").removeClass("selected");
-		$("#tab-groups").addClass("selected");
+		//$("#tab-groups").addClass("selected");
 	}
 	this.hideGroupViewer = function() {
 		jQuery('#group-viewer').addClass("group-viewer-inactive");
@@ -159,9 +160,9 @@ var contactUtilities = new function() {
 		this.hideGroupViewer();
 		this.showGroupListThin();
 		jQuery('#group-editor').removeClass("group-editor-inactive");
-		// Make only the correct tab show it is selected.
+		// Make no tab show it is selected.
 		$(".tab").removeClass("selected");
-		$("#tab-groups").addClass("selected");
+		//$("#tab-groups").addClass("selected");
 	}
 	this.hideGroupEditor = function() {
 		jQuery('#group-editor').addClass("group-editor-inactive");
@@ -184,9 +185,9 @@ var contactUtilities = new function() {
 		jQuery('#contact-viewer').append(this.makeContactDisplay(contactInfo));
 		// Make contact panel thinner.
 		jQuery('#contact-panel').addClass("contact-panel-thin");
-		// Make only the correct tab show it is selected.
+		// Make no tab show it is selected.
 		$(".tab").removeClass("selected");
-		$("#tab-contacts").addClass("selected");
+		//$("#tab-contacts").addClass("selected");
 	};
 	
 	this.hideContactViewer = function() {
