@@ -226,16 +226,22 @@ var contactUtilities = new function() {
 							//contactList.remove(document.getElementById(self.getContactInfoId(globalContactInfo)));
 							$(document.getElementById(self.getContactInfoId(globalContactInfo))).remove();
 							users.splice(i,1);
+							// Refresh contact list and show the contact viewer for next contact that exists. 
+							// Highlight the now currently viewed contact on the contact list.
 							if(i == (users.length)) {
 								// Display  0
-								self.showContactViewer(users[0]);
+								globalContactInfo = users[i-1];  //users[0];
+								self.refreshContactList(users);
+								self.showContactViewer(users[i-1]);  //users[0]);
 							} else {
+								globalContactInfo = users[i];
+								self.refreshContactList(users);
 								self.showContactViewer(users[i]);
 							}
 							break;
 						}				
 					}
-					self.refreshContactList(users);
+					//self.refreshContactList(users);
 				}
 			};
 		}(this));
@@ -592,10 +598,17 @@ window.addEventListener('load', function(e) {
 					//contactList.remove(document.getElementById(self.getContactInfoId(globalContactInfo)));
 					$(document.getElementById(contactUtilities.getContactInfoId(globalContactInfo))).remove();
 					users.splice(i,1);
+					// Refresh contact list and show the contact viewer for next contact that exists. 
+					// Highlight the now currently viewed contact on the contact list.
 					if(i == (users.length)) {
 						// Display  0
-						contactUtilities.showContactViewer(users[0]);
+						globalContactInfo = users[i-1];  //users[0];
+						contactUtilities.refreshContactList(users);
+						contactUtilities.showContactViewer(users[i-1]);  //users[0]);
+						
 					} else {
+						globalContactInfo = users[i];
+						contactUtilities.refreshContactList(users);
 						contactUtilities.showContactViewer(users[i]);
 					}
 					break;
@@ -603,7 +616,7 @@ window.addEventListener('load', function(e) {
 			 }
 		} 
 		contactUtilities.hideContactEditor();
-		contactUtilities.refreshContactList(users);
+		//contactUtilities.refreshContactList(users);
 	});
 	// Add contact stuff
 	jQuery('#contact-add-savebutton').click(function(){
