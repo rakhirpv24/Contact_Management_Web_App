@@ -32,6 +32,12 @@ hr {
 	visibility:hidden;
 }
 
+hr.divider {
+	visibility: initial;
+	color: rgba(0,0,0,0.2);
+	margin:0;
+}
+
 h3 {
 	font-size: 15pt;
 	margin: 4px;
