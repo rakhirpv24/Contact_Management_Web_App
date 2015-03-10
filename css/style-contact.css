@@ -150,7 +150,7 @@ Contact items in list mode.
 .contact-item {
 	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
 	margin: 1px 0px 1px 0px;
-	background-color:#FCF;
+	background-color:#CAE6FC;
 	height: 80px;
 }
 /*
@@ -235,7 +235,7 @@ Contact items in thin list mode.
 .contact-panel-thin .contact-item-grid {
 	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
 	margin: 1px 0px 1px 0px;
-	background-color:#FC9;
+	background-color:#8ECBFF;
 	height: 60px;
 	width: 100%;
 }
@@ -318,7 +318,7 @@ Contact items in thin list mode.
 	top: 0px;
 	text-overflow:crop;
 	overflow:hidden;
-	background-color:#F99;
+	background-color:#38C0FF;
 	-webkit-transition: all 0.2s ease-out;
        -moz-transition: all 0.2s ease-out;
         -ms-transition: all 0.2s ease-out;
@@ -354,14 +354,14 @@ Contact items in grid mode.
 .contact-item-grid {
 	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
 	margin: 2px;
-	background-color:#FCF;
+	background-color:#CAE6FC;
 	height: 200px;
 	width: 180px;
 	float: left;
 	overflow: hidden;
 }
 .contact-item-selected {
-	background-color:#C06 !important;
+	background-color:#CAE6FC !important;
 }
 
 .contact-item-grid-image-container {
@@ -385,7 +385,7 @@ Contact items in grid mode.
 	top: 170px;
 	padding: 2px 0 2px 3px;
 	margin: 0;
-	background-color:#F99;
+	background-color:#8ECBFF;
 	white-space:nowrap;
 }
 
@@ -395,7 +395,7 @@ Contact items in grid mode.
 	height: 70px;
 	left: 0px;
 	top: 130px;
-	background-color: #f9d1af; /* grid hover color*/
+	background-color: #38C0FF; /* grid hover color*/
 	-webkit-transition: all 0.2s ease-out;
 	-moz-transition: all 0.2s ease-out;
 	-ms-transition: all 0.2s ease-out;
@@ -509,7 +509,7 @@ Contact View - view the contact info.
 	position: absolute;
 	top: 0;
 	left: 240px;
-	background-color:#FC3;
+	background-color:#CAE6FC;
 	width: 75%;
 	height: -moz-calc(100% - 200px);
     height: -webkit-calc(100% - 200px);
@@ -606,7 +606,7 @@ Contact View - view the contact info.
 	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
 	top: 210px;
 	left: 300px;
-	background-color:#FF9;
+	background-color:#FEFBFF;
 	width: 270px;
 	height: 160px;
 }
@@ -614,7 +614,7 @@ Contact View - view the contact info.
 .contact-view-group-item {
 	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
 	margin: 2px;
-	background-color:#FCF;
+	background-color:#CAE6FC;
 	height: 128px;
 	width: 128px;
 	float: left;
@@ -641,7 +641,7 @@ Contact View - view the contact info.
 	vertical-align: bottom;
 	top: 110px;
 	left:0px;
-	background-color:#FF6;
+	background-color:#8ECBFF;
 	width:100%;
 	
 }
@@ -660,7 +660,7 @@ Contact editor.
 	top: 0;
 	//left: 240px;
 	left:0;
-	background-color:#FC3;
+	background-color:#CAE6FC;
 	//width: 75%;
 	width:100%;
 	/*
@@ -736,7 +736,7 @@ Contact editor.
 	position: relative;
 	top: 245px;
 	left: 500px;
-	background-color:#FF9;
+	background-color:#8ECBFF;
 	width: 310px;
 	height: 160px;
 }
@@ -745,7 +745,7 @@ Contact editor.
 .contact-edit-group-item {
 	position: relative;  /* Allows the contents to be absolutely positioned relative to this. */
 	margin: 2px;
-	background-color:#FCF;
+	background-color:#CAE6FC;
 	height: 128px;
 	width: 128px;
 	float: left;
@@ -796,7 +796,7 @@ Contact editor.
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color:#FC3;
+	background-color:#CAE6FC;
 	width: 100%;
 	height: -moz-calc(100% - 100px);
     height: -webkit-calc(100% - 100px);
@@ -959,7 +959,7 @@ Thin group list.
 .group-list-thin .contact-item-grid {
 	position: relative;  /* Allows the contact's contents to be absolutely positioned relative to this. */
 	margin: 1px 0px 1px 0px;
-	background-color:#FC9;
+	background-color:#8ECBFF;
 	height: 60px;
 	width: 100%;
 }
@@ -1011,7 +1011,7 @@ Thin group list.
 	top: 0px;
 	text-overflow:crop;
 	overflow:hidden;
-	background-color:#F99;
+	background-color:#38C0FF;
 }
 
 
