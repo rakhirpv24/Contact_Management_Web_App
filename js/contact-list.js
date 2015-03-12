@@ -8,6 +8,7 @@ var users = [
 	{firstName: "Emma", lastName: "Watson", email: "emma@sjsu.edu", cell: "(408)055-1234", photo: "images/emma_watson.jpg", birthdate: "1/1/1985", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
 	{firstName: "Leonardo", lastName: "", email: "leo@gmail.com", cell: "(408)555-2314", photo: "images/leonardo.jpg", birthdate: "16/1/1915", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
 	{firstName: "Rakhi", lastName: "Verma", email: "rpv@sjsu.edu", cell: "(408)555-1234", photo: "images/no-image.png", birthdate: "1/1/1989", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
+	{firstName: "Ron", lastName: "Mak", email: "ron.mak@sjsu.edu", cell: "(408)555-1234", photo: "images/ron.jpg", birthdate: "1/1/1989", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
 	{firstName: "Tom", lastName: "Cruise", email: "tom@yahoo.com", cell: "(408)505-1234", photo: "images/tom_cruise.jpg", birthdate: "13/1/1976", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"},
 	{firstName: "Tom", lastName: "Jerry", email: "jerry@aol.com", cell: "(658)555-1234", photo: "images/tom.jpg", birthdate: "1/1/2015", homeAddress: "1 Washington Square, San Jose", workAddress: "1 Washington Square, San Jose"}];
 	
