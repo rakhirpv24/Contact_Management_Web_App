@@ -454,13 +454,28 @@ var contactUtilities = new function() {
 	// Returns the HTML string for the group item, with classes for the grid format.
 	this.makeGroupListGridItemString = function(info) {
 		// FIXME: This uses some incorrect classes. Fix them if it is a problem.
-		return '<div class="contact-item-grid">'
+		var str;
+		
+		if (info.name != "Friends") {
+			str = '<div class="contact-item-grid">'
 						+ '<div class="group-item-on-click"></div>'
 						+ '<div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="'+ info.photo +'" alt="'+ info.name +'\'s image" /></div>'
 						+ '<div class="contact-item-grid-label-container">'
 						+ '<div class="contact-item-grid-name">'+ info.name + '</div>'
                         + '</div>'
                         +'</div>';
+		}
+		else {
+			// Highlight friends item in thin list.
+			str = '<div class="contact-item-grid contact-item-selected">'
+						+ '<div class="group-item-on-click"></div>'
+						+ '<div class="contact-item-grid-image-container"><img class="contact-item-grid-image" src="'+ info.photo +'" alt="'+ info.name +'\'s image" /></div>'
+						+ '<div class="contact-item-grid-label-container">'
+						+ '<div class="contact-item-grid-name">'+ info.name + '</div>'
+                        + '</div>'
+                        +'</div>';
+		}
+		return str;
 	}
 	
 	
